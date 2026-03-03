@@ -136,6 +136,9 @@ void ApplicationWindowDesktop::InitializeEngine() {
     // Prefer unpacked resources in build/bin so shader fixes are applied
     // immediately and do not depend on stale simulator.pck contents.
     parameters[Urho3D::EP_RESOURCE_PATHS] = resourcePaths.toStdString().c_str();
+    // На некоторых версиях macOS драйвер лучше работает в режиме GL2/совместимости.
+    // Это повышает шанс успешного создания контекста, особенно на новых системах.
+    parameters[Urho3D::EP_FORCE_GL2] = true;
     parameters[Urho3D::EP_AUTOLOAD_PATHS] = "";
     parameters[Urho3D::EP_WINDOW_RESIZABLE] = true;
     // HiDPI is disabled at app startup to keep backbuffer and viewport 1:1.
