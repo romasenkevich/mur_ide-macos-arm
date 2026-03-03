@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Скрипт запуска симулятора из IDE.
+# Делаем путь относительным к каталогу mur_ide, без захардкоженных абсолютных путей.
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"   # .../mur_ide
+SIM_DIR="$SCRIPT_DIR/../mur_simulator/build/bin"
+EXEC="$SIM_DIR/simulator"
+
+if [ ! -x "$EXEC" ]; then
+  echo "[mur-ide.simulator] Не найден исполняемый файл симулятора: $EXEC" >&2
+  echo "Убедитесь, что собран mur_simulator (см. RUNBOOK.md)." >&2
+  exit 1
+fi
+
+cd "$SIM_DIR"
+exec "$EXEC" "$@"

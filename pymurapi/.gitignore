@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Packaging/build artifacts
+*.egg-info/
+dist/
+build/
+
+# macOS junk
+.DS_Store
+**/.DS_Store

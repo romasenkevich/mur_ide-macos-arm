@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Определяем корень репозитория (папка, где лежит этот скрипт)
+ROOT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# Симулятор ожидает, что текущая директория = mur_simulator/build/bin
+cd "$ROOT_DIR/mur_simulator/build/bin" || {
+  echo "[start_simulator] Не удалось перейти в каталог mur_simulator/build/bin" >&2
+  echo "Сначала соберите mur_simulator (см. RUNBOOK.md, раздел сборки симулятора)." >&2
+  exit 1
+}
+
+EXEC="./simulator"
+
+if [ ! -x "$EXEC" ]; then
+  echo "[start_simulator] Не найден исполняемый файл симулятора: $EXEC" >&2
+  echo "Сначала соберите mur_simulator (см. RUNBOOK.md, раздел сборки симулятора)." >&2
+  exit 1
+fi
+
+exec "$EXEC" "$@"

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Hello&comma; mur&excl;</title>
+<style>
+.language-Python,
+code {
+  display: block;
+  overflow-x: auto;
+  background: #333333;
+  padding: 10px 10px 10px 30px;
+  line-height: 1.625rem;
+}
+
+.hljs,
+.hljs-subst {
+  color: #b8bfc6;
+}
+
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-doctag,
+.hljs-name {
+  color: #C88FD0;
+}
+
+.hljs-built_in,
+.hljs-literal,
+.hljs-bullet,
+.hljs-code,
+.hljs-addition {
+  color: #DA924A;
+}
+
+.hljs-regexp,
+.hljs-symbol,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-link,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #00979D;
+}
+
+.hljs-type,
+.hljs-params,
+.hljs-string,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-quote,
+.hljs-template-tag,
+.hljs-deletion {
+  color: #b8bfc6;
+}
+
+.hljs-title,
+.hljs-section {
+  color: #8d8df0;
+}
+
+.hljs-comment {
+  color: #DA924A;
+  word-wrap: break-word;
+}
+
+.hljs-meta-keyword {
+  color: #22202d;
+}
+
+.hljs-meta {
+  color: #434f54;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+strong {
+  color:#dedede;
+  font-weight: bold;
+}
+
+.hljs-function {
+  color: #cf9240;
+}
+
+.hljs-number {
+  color: #64AB8F;  
+}
+
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 1rem;
+	line-height: 1.625rem;
+	word-wrap: break-word;
+	color: #b8bfc6;
+	max-width: 1200px;
+	background: #363B40;
+	margin: auto;
+	padding: 20px; 
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom: 1px solid #eee;
+}
+
+
+h2{
+    font-size: 1.6rem;
+	color: #dedede;
+    border-bottom: 1px solid #363b40;
+}
+
+h3{
+	font-size: 1.75em;
+    line-height: 1.225;
+}
+
+h4{
+	font-size: 1.2rem;
+	color: #dedede;
+}
+
+h1, h2, h3, h4 {
+	font-family: "Lucida Grande", "Corbel", sans-serif;
+	font-weight: bold;
+	margin-top: 1rem; 
+	margin-bottom: 1rem;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre { white-space: pre-wrap; }
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 3px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre:not(.hljs) {
+	padding: 3px;
+	line-height: 19px;
+}
+
+blockquote {
+	color: #90a2a6;
+	background: #363b40;
+	margin: 0 0 1.875rem 1.875rem;
+	padding-left: 30px;
+	border-left: 2px solid #474d54;
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #90a2a6;
+	font-size: inherit;
+	background-color: #33383d;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+.table-of-contents li{
+	list-style-type: initial;
+}
+</style>
+        </head>
+        <body class="vscode-body vscode-light">
+            <h2 id="hello-mur">Hello, mur!</h2>
+<h4 id="описание-интерфейса">Описание интерфейса</h4>
+<p>Интерфейс MUR IDE состоит из 10 основных элементов:</p>
+<img src="qrc:/images/mur_ide_elements_new.jpg" alt="">
+<ul>
+<li>Кнопка переключения режимов [1] - локальное выполнение кода или выполнение кода на аппарате/режим телеуправления. При активном соединении с аппаратом иконка с ракетой будет зеленой, в противном случае красной.</li>
+<li>Кнопка запуска скрипта [2]. При нажатии на данную кнопку будет запущен текущий скрипт. Если выбран режим Local - скрипт запускается локально на вашем компьютере. Если выбран режим Robot то скрипт будет запущен удаленно на аппарате. Запуск скрипта отменяет режим телеуправления.</li>
+<li>Кнопка остановки скрипта [3]. При нажатии на данную кнопку будет остановлен запущенный скрипт. Если выбран режим Local - будет остановлен скрипт, запущенный на вашем компьютере. Если выбран режим Robot то остановится скрипт, запущенный удаленно.</li>
+<li>Новый документ [4]. При нажатие на данную кнопку редактор кода будет очищен, изменения не сохранятся и будет создан виртуальный новый файл.</li>
+<li>Сохранить текущий документ [5]. При нажатие на данную кнопку текущий скрипт будет сохранен. Если вы сохраняете виртуальный файл, то появится диалоговое окно с предложением выбрать место куда ваш файл должен быть сохранен.</li>
+<li>Открыть документ [6]. При нажатие на данную кнопку появится диалоговое окно с предложением выбрать какой файл с кодом открыть.</li>
+<li>Запуск режима телеуправления [7]. Вы можете запустить данный режим только перейдя в режим Robot [1] и подключившись к аппарату. При активации данного режима во вкладке Remote [10] будут отображаться видеоизображения с камер аппарата, и вы сможете управлять аппаратом при помощи геймпада.</li>
+<li>Запуск симулятора [8]. При нажатие на данную кнопку откроется окно с симулятором.</li>
+<li>Включить/Выключить отображение телеметрии [9]. При нажатие на данную кнопку появится всплывающее окно с информацией о заряде батареи и показания с датчиков аппарата. Данная кнопка активна только при подключении к аппарату.</li>
+<li>Информационные вкладки [10]. Console - отображение системных сообщений о запуске/остановке программ, так же в это окно попадают сообщения из stderr и stdout скрипта, запущенного на аппарате при активном подключение. Help - окно с данным текстом. Remote - окно в котором будут отображаться видеоизображения в режиме телеуправления [7].</li>
+</ul>
+<h4 id="горячие-клавиши">Горячие клавиши</h4>
+<p>Открыть файл - Ctrl+Shift+O<br>
+Сохранить файл - Ctrl+S<br>
+Сохранить файл как - Ctrl+Shift+S<br>
+Новый файл - Ctrl+Shift+N</p>
+<p>Увеличить шрифт - Ctrl+Shift+=<br>
+Уменьшить шрифт - Ctrl+Shift+-<br>
+Поиск и замена - Ctrl+F<br>
+Закрыть поиск и замену - Esc</p>
+<p>Показать телеметрию - F1<br>
+Запустить программу - F5<br>
+Остановить программу - F6<br>
+Начать телеуправление - F7<br>
+Записать изображение с обеих камер - F8<br>
+Записать видео с обеих камер - F9</p>
+<h4 id="подключение-к-аппарату">Подключение к аппарату</h4>
+<p>Все просто - вам нужно включить аппарат, подождать пока появится WiFi (mur_ssid), подключиться к нему (пароль по умолчанию vladivostok) и... Все готово!</p>
+<h4 id="запись-изображений-с-аппарата">Запись изображений с аппарата</h4>
+<p>В информационной вкладке Remote [10] отображается видео с камер аппарата. Видео можно записать (кнопка Record), а так же сделать фото (кнопка Capture). Сделанные фото и видео сохраняются на диске, куда установлена программа: C:\Users\User_name\Pictures\murImages</p>
+<p>Если у вас возникли проблемы с получением изображения с аппарата, то Вам необходимо отключить Брандмауэр Windows.</p>
+<h4 id="телеуправление-аппаратом-с-клавиатуры">Телеуправление аппаратом с клавиатуры</h4>
+<p>Для телеуправления аппаратом с помощью клавиатуры необходимо нажать на информационную вкладку Remote [10], раскрыть меню Gamepad axes и нажать на появившуюся область.</p>
+<p>Теперь вы можете управлять аппаратом с помощью кнопок W, A, S, D, Q, E.</p>
+<h4 id="запуск-симулятора">Запуск симулятора</h4>
+<p>Запустить симулятор еще проще - достаточно нажать кнопку &quot;Запуск симулятора&quot; и подождать пока он откроется. Симулятор программируется точно так же как и аппарат, за исключением пары функций из pymurapi.</p>
+<blockquote>
+<p><strong>Важно</strong>: вы не можете управлять LED лентой в симуляторе. Для получения изображений из симулятора есть специальные функции <em><strong>get_image_front</strong></em> и <em><strong>get_image_bottom</strong></em>, данные функции <strong>НЕ</strong> работают на аппарате. Для получения видеоизображений воспользуйтесь функциями из OpenCV. Так же важно отметить, формат некоторых данных различен (показания курса, глубины). Имейте это ввиду.</p>
+</blockquote>
+<h4 id="телеуправление-в-симуляторе">Телеуправление в симуляторе</h4>
+<p>Для того, чтобы включить режим телеуправления в симуляторе необходимо нажать кнопку <strong>Remote mode</strong>.<br>
+После этого будет доступно управление с помощью следующих клавиш:</p>
+<ul>
+<li>W, A, S, D, Z, X - движение в горизонтальной плоскости;</li>
+<li>Q, E - всплытие и погружение;</li>
+<li>F, G - выстрел и сброс маркера;</li>
+<li>Пробел - открыть/закрыть захват.</li>
+</ul>
+<h4 id="программирование---инициализация">Программирование - инициализация</h4>
+<p>Первым делом вам необходимо подключить библиотеку pymurapi. Для того, чтобы это сделать вызовите следующий код:</p>
+<pre><code class="language-Python"><span class="hljs-keyword">import</span> pymurapi <span class="hljs-keyword">as</span> mur
+</code></pre>
+<p>В дальнейшем mur будет использоваться в качестве алиаса на библиотеку pymurapi.</p>
+<p>Далее вам необходимо создать экземпляр объекта MurApiBase. Для этого вызовите функцию mur_init():</p>
+<pre><code class="language-Python">auv = mur.mur_init()
+</code></pre>
+<blockquote>
+<p><strong>Важно:</strong> Функция mur_init должна вызываться только один раз! Множественные вызовы данной функции ведут к неопределенному поведению.</p>
+</blockquote>
+<p>Все готово! Библиотека pymurapi подключена и инициализирована. Вся дальнейшая работа с аппаратом или симулятором будет происходить через объект auv.</p>
+<h4 id="список-функций-и-их-описание">Список функций и их описание</h4>
+<pre><code class="language-Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">set_on_delay</span>(<span class="hljs-params">value</span>)
+<span class="hljs-comment"># C помощью данной функции вы можете задать время, которое будет гореть LED лента на аппарате. </span>
+<span class="hljs-comment"># Данная функция работает только на аппарате. </span>
+<span class="hljs-comment"># Время задается в секундах.</span>
+<span class="hljs-comment"># Пример использования:</span>
+auv.set_on_delay(<span class="hljs-number">0.5</span>) 
+</code></pre>
+<pre><code class="language-Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">set_off_delay</span>(<span class="hljs-params">value</span>)
+<span class="hljs-comment"># C помощью данной функции вы можете задать время, которое LED лента гореть не будет. </span>
+<span class="hljs-comment"># Данная функция работает только на аппарате. </span>
+<span class="hljs-comment"># Время задается в секундах.</span>
+<span class="hljs-comment"># Пример использования:</span>
+auv.set_off_delay(<span class="hljs-number">1.8</span>) 
+</code></pre>
+<pre><code class="language-Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">set_rgb_color</span>(<span class="hljs-params">r, g, b</span>):
+<span class="hljs-comment"># C помощью данной функции вы можете задать цвет LED ленты в цветовом пространстве RGB.</span>
+<span class="hljs-comment"># Данная функция работает только на аппарате. </span>
+<span class="hljs-comment"># Пример использования:</span>
+auv.set_rgb_color(<span class="hljs-number">128</span>, <span class="hljs-number">0</span>, <span class="hljs-number">64</span>) 
+</code></pre>
+<pre><code class="language-Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">set_single_led_color</span>(<span class="hljs-params">led, r, g, b</span>):
+<span class="hljs-comment"># C помощью данной функции вы можете задать цвет отдельных светодиодов на LED ленте в цветовом пространстве RGB.</span>
+<span class="hljs-comment"># Данная функция работает только на аппаратах MiddleAUV выпущенных мая 2021 года и позже.</span>
+<span class="hljs-comment"># На LED ленте 13 светодиодов. 0 - это номер первого светодиода, 12 - последнего. </span>
+<span class="hljs-comment"># Пример использования:</span>
+auv.set_single_led_color(<span class="hljs-number">12</span>, <span class="hljs-number">128</span>, <span class="hljs-number">0</span>, <span class="hljs-number">64</span>) 
+</code></pre>
+<pre><code class="language-Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">set_motor_power</span>(<span class="hljs-params">motor_id, power</span>)
+<span class="hljs-comment"># C помощью данной функции вы можете задать тягу на моторы от -100 до 100. Где motor_id - номер мотора от 0 до 3 для аппарата и от 0 до 4 для симулятора. </span>
+<span class="hljs-comment"># Пример использования:</span>
+auv.set_motor_power(<span class="hljs-number">0</span>, <span class="hljs-number">50</span>) 
+auv.set_motor_power(<span class="hljs-number">1</span>, -<span class="hljs-number">50</span>) 
+</code></pre>
+<blockquote>
+<p><strong>Важно:</strong> В симуляторе моторы 0 и 1 отвечают за движение вперед/назад. Мотор 2 и 3 за всплытие/погружение. Мотор 4 за движение влево/вправо.</p>
+</blockquote>
+<pre><code class="language-Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_depth</span>()
+<span class="hljs-comment"># Данная функция возвращает значение глубины. </span>
+<span class="hljs-comment"># Пример использования:</span>
+depth = auv.get_depth()
+</code></pre>
+<pre><code class="language-Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_yaw</span>()
+<span class="hljs-comment"># Данная функция возвращает значение курса. </span>
+<span class="hljs-comment"># Пример использования:</span>
+yaw = auv.get_yaw()
+</code></pre>
+<pre><code class="language-Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_pitch</span>()
+<span class="hljs-comment"># Данная функция возвращает значение дифферента. </span>
+<span class="hljs-comment"># Пример использования:</span>
+pitch = auv.get_pitch()
+</code></pre>
+<pre><code class="language-Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_roll</span>()
+<span class="hljs-comment"># Данная функция возвращает значение крена. </span>
+<span class="hljs-comment"># Пример использования:</span>
+roll = auv.get_roll()
+</code></pre>
+<h4 id="функции-доступные-только-в-симуляторе">Функции, доступные <strong>ТОЛЬКО</strong> в симуляторе:</h4>
+<blockquote>
+<p><strong>Важно:</strong> Функции, приведенные ниже, доступны только в симуляторе, на аппарате данный код работать <strong>НЕ</strong> будет. <em>Мы вас предупредили</em>.</p>
+</blockquote>
+<pre><code class="language-Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_image_front</span>()
+<span class="hljs-comment"># Даная функция возвращает изображение с передней камеры - тип cv2.Mat (BGR, CV8_UC3).</span>
+<span class="hljs-comment"># Данная функция работает только в симуляторе. </span>
+<span class="hljs-comment"># Пример использования:</span>
+image = auv.get_image_front()
+</code></pre>
+<pre><code class="language-Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_image_bottom</span>()
+<span class="hljs-comment"># Даная функция возвращает изображение с донной камеры - тип cv2.Mat (BGR, CV8_UC3).</span>
+<span class="hljs-comment"># Данная функция работает только в симуляторе. </span>
+<span class="hljs-comment"># Пример использования:</span>
+image = auv.get_image_bottom()
+</code></pre>
+<pre><code class="language-Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">drop</span>()
+<span class="hljs-comment"># Вызов данной функции приведет к сбросу сферического объекта в симуляторе.</span>
+auv.drop()
+</code></pre>
+<pre><code class="language-Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">shoot</span>()
+<span class="hljs-comment"># Вызов данной функции приведет к выстрелу цилиндрическим объектом в симуляторе.</span>
+auv.shoot()
+</code></pre>
+<pre><code class="language-Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">open_grabber</span>()
+<span class="hljs-comment"># Вызов данной функции приведет к раскрытию захвата в симуляторе.</span>
+auv.open_grabber()
+</code></pre>
+<pre><code class="language-Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">close_grabber</span>()
+<span class="hljs-comment"># Вызов данной функции приведет к закрытию захвата в симуляторе.</span>
+<span class="hljs-comment"># Если в момент вызова захвата находился в контакте с объектом, то объект будет &quot;захвачен&quot;.</span>
+auv.close_grabber()
+</code></pre>
+<pre><code class="language-Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_hydrophone_signal</span>():
+<span class="hljs-comment"># Данная функция возвращает сигналы с трех гидрофонов и расстояние каждого из них до гидроакустического маяка на сцене.</span>
+<span class="hljs-comment"># Гидрофоны располагаются на переднем правом, переднем левом и на заднем правом моторе. В таком же порядке данная функция и возвращает значения.</span>
+<span class="hljs-comment"># Каждый из гидрофонов передает информацию о том, какой маяк транслирует сигнал. Номер маяка соответствует цифре сигнала (от 1 до 5). </span>
+<span class="hljs-comment"># Всего может быть до пяти маяков на одной сцене.</span>
+<span class="hljs-comment"># В настройках симулятора доступны изменения некоторых параметров транслируемого сигнала. Pulse period - период импульса, pulse width - ширина импульса, spreading speed - скорость распространения сигнала. </span>
+tr, tl, fr, dist_tr, dist_tl, dist_fr = auv.get_hydrophone_signal()
+</code></pre>
+
+            
+            
+        </body>
+        </html>

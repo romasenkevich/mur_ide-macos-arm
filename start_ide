@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Определяем корень репозитория (папка, где лежит этот скрипт)
+ROOT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# IDE ожидает, что текущая директория = mur_ide
+cd "$ROOT_DIR/mur_ide" || {
+  echo "[start_ide] Не удалось перейти в каталог mur_ide" >&2
+  exit 1
+}
+
+EXEC="./build/mur_ide"
+
+if [ ! -x "$EXEC" ]; then
+  echo "[start_ide] Не найден исполняемый файл MUR IDE: $EXEC" >&2
+  echo "Сначала соберите проект (см. RUNBOOK.md, раздел сборки mur_ide)." >&2
+  exit 1
+fi
+
+exec "$EXEC" "$@"

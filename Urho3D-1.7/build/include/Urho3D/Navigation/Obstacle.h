@@ -1,0 +1,1 @@
+/Users/romansenkevic/Desktop/Cursor/MUR IDE /Urho3D-1.7/Source/Urho3D/Navigation/Obstacle.h

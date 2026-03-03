@@ -1,0 +1,676 @@
+[Tue Mar  3 12:21:36 2026] INFO: Opened log file simulator.log
+[Tue Mar  3 12:21:36 2026] INFO: Created 7 worker threads
+[Tue Mar  3 12:21:36 2026] INFO: Added resource path /Users/romansenkevic/Desktop/Cursor/MUR IDE /mur_simulator/build/bin/Data/
+[Tue Mar  3 12:21:36 2026] INFO: Added resource path /Users/romansenkevic/Desktop/Cursor/MUR IDE /mur_simulator/build/bin/CoreData/
+[Tue Mar  3 12:21:36 2026] INFO: Adapter used Apple Apple M2
+[Tue Mar  3 12:21:36 2026] INFO: Set screen mode 2940x1566 rate 60 Hz windowed monitor 0 resizable highDPI
+[Tue Mar  3 12:21:36 2026] INFO: Initialized input
+[Tue Mar  3 12:21:36 2026] INFO: Initialized user interface
+[Tue Mar  3 12:21:36 2026] DEBUG: Loading resource Textures/Ramp.png
+[Tue Mar  3 12:21:36 2026] DEBUG: Loading temporary resource Textures/Ramp.xml
+[Tue Mar  3 12:21:36 2026] DEBUG: Loading resource Textures/Spot.png
+[Tue Mar  3 12:21:36 2026] DEBUG: Loading temporary resource Textures/Spot.xml
+[Tue Mar  3 12:21:36 2026] DEBUG: Loading resource Techniques/NoTexture.xml
+[Tue Mar  3 12:21:36 2026] DEBUG: Loading resource RenderPaths/Forward.xml
+[Tue Mar  3 12:21:36 2026] INFO: Initialized renderer
+[Tue Mar  3 12:21:36 2026] INFO: Set audio mode 44100 Hz stereo interpolated
+[Tue Mar  3 12:21:36 2026] INFO: Initialized engine
+[Tue Mar  3 12:21:37 2026] DEBUG: Reloading shaders
+[Tue Mar  3 12:22:04 2026] INFO: Added resource path /Users/romansenkevic/Library/Caches/Simulator/mur_scene/OnePinger/Data/
+[Tue Mar  3 12:22:04 2026] INFO: Loading scene from /Users/romansenkevic/Library/Caches/Simulator/mur_scene/OnePinger/OnePinger.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Models/Box.mdl
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Materials/Environment/Skybox_PartlyCloudy.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Techniques/DiffSkybox.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Textures/Skybox/PartlyCloudy/Skybox.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading temporary resource Textures/Skybox/PartlyCloudy/PartlyCloudy_PosX.png
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading temporary resource Textures/Skybox/PartlyCloudy/PartlyCloudy_NegX.png
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading temporary resource Textures/Skybox/PartlyCloudy/PartlyCloudy_PosY.png
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading temporary resource Textures/Skybox/PartlyCloudy/PartlyCloudy_NegY.png
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading temporary resource Textures/Skybox/PartlyCloudy/PartlyCloudy_PosZ.png
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading temporary resource Textures/Skybox/PartlyCloudy/PartlyCloudy_NegZ.png
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Materials/Objects/Flare.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Techniques/DiffAddAlpha.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Textures/Particles/Flare.dds
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Textures/Particles/Flare.dds
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Models/Cylinder.mdl
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Materials/Environment/PoolLight.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Techniques/NoTextureUnlitVCol.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Models/Plane.mdl
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Materials/Pool/TilesDark.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Techniques/PBR_PoolTiles.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Textures/Tiles/Bright/Tiles020_1K-PNG_Color.dds
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Textures/Tiles/Bright/Tiles020_1K-PNG_NormalGL.dds
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Textures/Tiles/Bright/Tiles020_1K-PNG_Roughness.dds
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Textures/Water/WaterNoise.dds
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Textures/Water/Waves/others_0020_color_1k.dds
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Materials/Pool/TilesBright.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Materials/Environment/WaterTop.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Techniques/Water.xml
+[Tue Mar  3 12:22:04 2026] ERROR: Could not find resource Textures/WaterNoise.dds
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Particles/UnderwaterBubbles.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Materials/Particles/SoftParticle.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Techniques/DiffUnlitParticleAlpha.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Textures/Particles/SoftParticle.dds
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Particles/UnderwaterGeneric.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Materials/Objects/Colors/Black.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Techniques/PBR_PoolObject_Textured.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Textures/Objects/White.dds
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Textures/Fabric/Fabric081C_1K-JPG_NormalGL.dds
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Textures/Objects/Black.dds
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Models/AUV/MAUV.mdl
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Materials/AUV/Frame.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Techniques/PBR_PoolObject_NoTexture.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Materials/AUV/Buoyancy.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Materials/AUV/Acril.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Techniques/PBR_PoolObject_FollowUV.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Textures/Objects/Acril.dds
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Textures/Objects/NoNormal.dds
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Materials/AUV/Killswitch.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Materials/AUV/Blades.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Models/AUV/Thruster.mdl
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource RenderPaths/MurSimulator_Main.xml
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource Models/AUV/Grabber.mdl
+[Tue Mar  3 12:22:04 2026] DEBUG: Loading resource RenderPaths/MurSimulator_Camera.xml
+[Tue Mar  3 12:22:05 2026] DEBUG: Loading resource Shaders/GLSL/Shadow.glsl
+[Tue Mar  3 12:22:05 2026] DEBUG: Loading resource Shaders/GLSL/PoolShaderPBR.glsl
+[Tue Mar  3 12:22:05 2026] DEBUG: Loading resource Shaders/GLSL/Water.glsl
+[Tue Mar  3 12:22:05 2026] DEBUG: Loading resource Shaders/GLSL/Depth.glsl
+[Tue Mar  3 12:22:05 2026] DEBUG: Loading resource Shaders/GLSL/Skybox.glsl
+[Tue Mar  3 12:22:05 2026] DEBUG: Loading resource Shaders/GLSL/Urho2D.glsl
+[Tue Mar  3 12:22:05 2026] DEBUG: Loading resource Shaders/GLSL/Unlit.glsl
+[Tue Mar  3 12:22:05 2026] DEBUG: Loading resource Shaders/GLSL/UnlitParticle.glsl
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated scratch buffer with size 120000
+[Tue Mar  3 12:22:05 2026] DEBUG: Resized scratch buffer to size 1200000
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated new screen buffer size 320x240 format 34842
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated new screen buffer size 320x240 format 34842
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated new screen buffer size 320x240 format 33326
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated new screen buffer size 320x240 format 6408
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated new screen buffer size 160x120 format 6408
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated new screen buffer size 160x120 format 6408
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated new screen buffer size 160x120 format 6408
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated new screen buffer size 320x240 format 35056
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader Depth()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader Depth()
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader Depth() and pixel shader Depth()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader Depth(INSTANCED)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader Depth(INSTANCED) and pixel shader Depth()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(FOLLOW_UV)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader PoolShaderPBR(DIFFMAP FOLLOW_UV IB METALLIC PBR ROUGHNESS)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(FOLLOW_UV) and pixel shader PoolShaderPBR(DIFFMAP FOLLOW_UV IB METALLIC PBR ROUGHNESS)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(NOUV)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader PoolShaderPBR(IBL PBR)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(NOUV) and pixel shader PoolShaderPBR(IBL PBR)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(NORMALMAP TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader PoolShaderPBR(DIFFMAP IB METALLIC NORMALMAP PBR ROUGHNESS TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(NORMALMAP TILING) and pixel shader PoolShaderPBR(DIFFMAP IB METALLIC NORMALMAP PBR ROUGHNESS TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(INSTANCED NORMALMAP TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(INSTANCED NORMALMAP TILING) and pixel shader PoolShaderPBR(DIFFMAP IB METALLIC NORMALMAP PBR ROUGHNESS TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader Shadow()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader Shadow()
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader Shadow() and pixel shader Shadow()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(DIRLIGHT FOLLOW_UV PERPIXEL SHADOW)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader PoolShaderPBR(DIFFMAP DIRLIGHT FOLLOW_UV IB METALLIC PBR PCF_SHADOW PERPIXEL ROUGHNESS SHADOW)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(DIRLIGHT FOLLOW_UV PERPIXEL SHADOW) and pixel shader PoolShaderPBR(DIFFMAP DIRLIGHT FOLLOW_UV IB METALLIC PBR PCF_SHADOW PERPIXEL ROUGHNESS SHADOW)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(DIRLIGHT NOUV PERPIXEL SHADOW)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader PoolShaderPBR(DIRLIGHT IBL PBR PCF_SHADOW PERPIXEL SHADOW)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(DIRLIGHT NOUV PERPIXEL SHADOW) and pixel shader PoolShaderPBR(DIRLIGHT IBL PBR PCF_SHADOW PERPIXEL SHADOW)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(DIRLIGHT NORMALMAP PERPIXEL SHADOW TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader PoolShaderPBR(DIFFMAP DIRLIGHT IB METALLIC NORMALMAP PBR PCF_SHADOW PERPIXEL ROUGHNESS SHADOW TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(DIRLIGHT NORMALMAP PERPIXEL SHADOW TILING) and pixel shader PoolShaderPBR(DIFFMAP DIRLIGHT IB METALLIC NORMALMAP PBR PCF_SHADOW PERPIXEL ROUGHNESS SHADOW TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(DIRLIGHT INSTANCED NORMALMAP PERPIXEL SHADOW TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(DIRLIGHT INSTANCED NORMALMAP PERPIXEL SHADOW TILING) and pixel shader PoolShaderPBR(DIFFMAP DIRLIGHT IB METALLIC NORMALMAP PBR PCF_SHADOW PERPIXEL ROUGHNESS SHADOW TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(FOLLOW_UV PERPIXEL POINTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader PoolShaderPBR(DIFFMAP FOLLOW_UV IB METALLIC PBR PERPIXEL POINTLIGHT ROUGHNESS)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(FOLLOW_UV PERPIXEL POINTLIGHT) and pixel shader PoolShaderPBR(DIFFMAP FOLLOW_UV IB METALLIC PBR PERPIXEL POINTLIGHT ROUGHNESS)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(NOUV PERPIXEL POINTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader PoolShaderPBR(IBL PBR PERPIXEL POINTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(NOUV PERPIXEL POINTLIGHT) and pixel shader PoolShaderPBR(IBL PBR PERPIXEL POINTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(NORMALMAP PERPIXEL POINTLIGHT TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader PoolShaderPBR(DIFFMAP IB METALLIC NORMALMAP PBR PERPIXEL POINTLIGHT ROUGHNESS TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(NORMALMAP PERPIXEL POINTLIGHT TILING) and pixel shader PoolShaderPBR(DIFFMAP IB METALLIC NORMALMAP PBR PERPIXEL POINTLIGHT ROUGHNESS TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(INSTANCED NORMALMAP PERPIXEL POINTLIGHT TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(INSTANCED NORMALMAP PERPIXEL POINTLIGHT TILING) and pixel shader PoolShaderPBR(DIFFMAP IB METALLIC NORMALMAP PBR PERPIXEL POINTLIGHT ROUGHNESS TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(FOLLOW_UV PERPIXEL SPOTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader PoolShaderPBR(DIFFMAP FOLLOW_UV IB METALLIC PBR PERPIXEL ROUGHNESS SPECULAR SPOTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(FOLLOW_UV PERPIXEL SPOTLIGHT) and pixel shader PoolShaderPBR(DIFFMAP FOLLOW_UV IB METALLIC PBR PERPIXEL ROUGHNESS SPECULAR SPOTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(NOUV PERPIXEL SPOTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader PoolShaderPBR(IBL PBR PERPIXEL SPECULAR SPOTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(NOUV PERPIXEL SPOTLIGHT) and pixel shader PoolShaderPBR(IBL PBR PERPIXEL SPECULAR SPOTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader PoolShaderPBR(IBL PBR PERPIXEL SPOTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(NOUV PERPIXEL SPOTLIGHT) and pixel shader PoolShaderPBR(IBL PBR PERPIXEL SPOTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(NORMALMAP PERPIXEL SPOTLIGHT TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader PoolShaderPBR(DIFFMAP IB METALLIC NORMALMAP PBR PERPIXEL ROUGHNESS SPECULAR SPOTLIGHT TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(NORMALMAP PERPIXEL SPOTLIGHT TILING) and pixel shader PoolShaderPBR(DIFFMAP IB METALLIC NORMALMAP PBR PERPIXEL ROUGHNESS SPECULAR SPOTLIGHT TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(INSTANCED NORMALMAP PERPIXEL SPOTLIGHT TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(INSTANCED NORMALMAP PERPIXEL SPOTLIGHT TILING) and pixel shader PoolShaderPBR(DIFFMAP IB METALLIC NORMALMAP PBR PERPIXEL ROUGHNESS SPECULAR SPOTLIGHT TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader Skybox()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader Skybox()
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader Skybox() and pixel shader Skybox()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader UnlitParticle(BILLBOARD VERTEXCOLOR)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader UnlitParticle(DIFFMAP VERTEXCOLOR)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader UnlitParticle(BILLBOARD VERTEXCOLOR) and pixel shader UnlitParticle(DIFFMAP VERTEXCOLOR)
+[Tue Mar  3 12:22:05 2026] DEBUG: Loading resource Shaders/GLSL/FXAA3.glsl
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader FXAA3()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader FXAA3(FXAA_QUALITY_PRESET=12)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader FXAA3() and pixel shader FXAA3(FXAA_QUALITY_PRESET=12)
+[Tue Mar  3 12:22:05 2026] DEBUG: Loading resource Shaders/GLSL/Fisheye.glsl
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader Fisheye()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader Fisheye()
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader Fisheye() and pixel shader Fisheye()
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated new screen buffer size 160x120 format 35056
+[Tue Mar  3 12:22:05 2026] DEBUG: Loading resource Shaders/GLSL/BlurRotational.glsl
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader BlurRotational()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader BlurRotational(BLUR3)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader BlurRotational() and pixel shader BlurRotational(BLUR3)
+[Tue Mar  3 12:22:05 2026] DEBUG: Loading resource Shaders/GLSL/BloomComplex.glsl
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader BloomComplex()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader BloomComplex(COPY)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader BloomComplex() and pixel shader BloomComplex(COPY)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader BlurRotational(BLUR7 BLUR_RADIAL)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader BlurRotational() and pixel shader BlurRotational(BLUR7 BLUR_RADIAL)
+[Tue Mar  3 12:22:05 2026] DEBUG: Loading resource Shaders/GLSL/FocusBlur.glsl
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader FocusBlur()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader FocusBlur()
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader FocusBlur() and pixel shader FocusBlur()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader BloomComplex()
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader BloomComplex() and pixel shader BloomComplex()
+[Tue Mar  3 12:22:05 2026] DEBUG: Loading resource Shaders/GLSL/ChromaticAberration.glsl
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader ChromaticAberration()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader ChromaticAberration()
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader ChromaticAberration() and pixel shader ChromaticAberration()
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated new screen buffer size 320x240 format 35056
+[Tue Mar  3 12:22:05 2026] DEBUG: Loading resource Shaders/GLSL/Noise.glsl
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader Noise()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader Noise()
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader Noise() and pixel shader Noise()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(NORMALMAP)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader PoolShaderPBR(DIFFMAP IB METALLIC NORMALMAP PBR ROUGHNESS)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(NORMALMAP) and pixel shader PoolShaderPBR(DIFFMAP IB METALLIC NORMALMAP PBR ROUGHNESS)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader Unlit(NOUV VERTEXCOLOR)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader Unlit(VERTEXCOLOR)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader Unlit(NOUV VERTEXCOLOR) and pixel shader Unlit(VERTEXCOLOR)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader Shadow(SKINNED)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader Shadow(SKINNED) and pixel shader Shadow()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(DIRLIGHT NORMALMAP PERPIXEL SHADOW)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader PoolShaderPBR(DIFFMAP DIRLIGHT IB METALLIC NORMALMAP PBR PCF_SHADOW PERPIXEL ROUGHNESS SHADOW)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(DIRLIGHT NORMALMAP PERPIXEL SHADOW) and pixel shader PoolShaderPBR(DIFFMAP DIRLIGHT IB METALLIC NORMALMAP PBR PCF_SHADOW PERPIXEL ROUGHNESS SHADOW)
+[Tue Mar  3 12:22:05 2026] DEBUG: Loading resource Shaders/GLSL/Stencil.glsl
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader Stencil()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader Stencil()
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader Stencil() and pixel shader Stencil()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader PoolShaderPBR(DIFFMAP IB METALLIC NORMALMAP PBR PERPIXEL POINTLIGHT ROUGHNESS SPECULAR TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(INSTANCED NORMALMAP PERPIXEL POINTLIGHT TILING) and pixel shader PoolShaderPBR(DIFFMAP IB METALLIC NORMALMAP PBR PERPIXEL POINTLIGHT ROUGHNESS SPECULAR TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(NORMALMAP PERPIXEL POINTLIGHT TILING) and pixel shader PoolShaderPBR(DIFFMAP IB METALLIC NORMALMAP PBR PERPIXEL POINTLIGHT ROUGHNESS SPECULAR TILING)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(NORMALMAP PERPIXEL POINTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader PoolShaderPBR(DIFFMAP IB METALLIC NORMALMAP PBR PERPIXEL POINTLIGHT ROUGHNESS)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(NORMALMAP PERPIXEL POINTLIGHT) and pixel shader PoolShaderPBR(DIFFMAP IB METALLIC NORMALMAP PBR PERPIXEL POINTLIGHT ROUGHNESS)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(NORMALMAP PERPIXEL SPOTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader PoolShaderPBR(DIFFMAP IB METALLIC NORMALMAP PBR PERPIXEL ROUGHNESS SPECULAR SPOTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(NORMALMAP PERPIXEL SPOTLIGHT) and pixel shader PoolShaderPBR(DIFFMAP IB METALLIC NORMALMAP PBR PERPIXEL ROUGHNESS SPECULAR SPOTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader Unlit(BILLBOARD)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader Unlit(DIFFMAP)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader Unlit(BILLBOARD) and pixel shader Unlit(DIFFMAP)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader Urho2D()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader Urho2D()
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader Urho2D() and pixel shader Urho2D()
+[Tue Mar  3 12:22:05 2026] DEBUG: Loading resource Shaders/GLSL/CopyFramebuffer.glsl
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader CopyFramebuffer()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader CopyFramebuffer()
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader CopyFramebuffer() and pixel shader CopyFramebuffer()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader Water()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled pixel shader Water()
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader Water() and pixel shader Water()
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated new screen buffer size 2940x1566 format 34842
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated new screen buffer size 2940x1566 format 34842
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated new screen buffer size 2940x1566 format 33326
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated new screen buffer size 2940x1566 format 6408
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated new screen buffer size 1470x783 format 6408
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated new screen buffer size 1470x783 format 6408
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated new screen buffer size 1470x783 format 6408
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader Depth(SKINNED)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader Depth(SKINNED) and pixel shader Depth()
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(NOUV SKINNED)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(NOUV SKINNED) and pixel shader PoolShaderPBR(IBL PBR)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(DIRLIGHT NOUV PERPIXEL SHADOW SKINNED)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(DIRLIGHT NOUV PERPIXEL SHADOW SKINNED) and pixel shader PoolShaderPBR(DIRLIGHT IBL PBR PCF_SHADOW PERPIXEL SHADOW)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(NOUV PERPIXEL POINTLIGHT SKINNED)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(NOUV PERPIXEL POINTLIGHT SKINNED) and pixel shader PoolShaderPBR(IBL PBR PERPIXEL POINTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Compiled vertex shader PoolShaderPBR(NOUV PERPIXEL SKINNED SPOTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Linked vertex shader PoolShaderPBR(NOUV PERPIXEL SKINNED SPOTLIGHT) and pixel shader PoolShaderPBR(IBL PBR PERPIXEL SPECULAR SPOTLIGHT)
+[Tue Mar  3 12:22:05 2026] DEBUG: Allocated new screen buffer size 1470x783 format 35056
+[Tue Mar  3 12:22:05 2026] DEBUG: Resized scratch buffer to size 3840
+[Tue Mar  3 12:22:05 2026] DEBUG: Resized scratch buffer to size 6016
+[Tue Mar  3 12:22:05 2026] DEBUG: Resized scratch buffer to size 8064
+[Tue Mar  3 12:22:05 2026] DEBUG: Resized scratch buffer to size 10112
+[Tue Mar  3 12:22:05 2026] DEBUG: Resized scratch buffer to size 12160
+[Tue Mar  3 12:22:05 2026] DEBUG: Resized scratch buffer to size 13952
+[Tue Mar  3 12:22:05 2026] DEBUG: Resized scratch buffer to size 15744
+[Tue Mar  3 12:22:05 2026] DEBUG: Resized scratch buffer to size 17536
+[Tue Mar  3 12:22:05 2026] DEBUG: Resized scratch buffer to size 19584
+[Tue Mar  3 12:22:05 2026] DEBUG: Resized scratch buffer to size 21632
+[Tue Mar  3 12:22:05 2026] DEBUG: Resized scratch buffer to size 23424
+[Tue Mar  3 12:22:05 2026] DEBUG: Resized scratch buffer to size 25344
+[Tue Mar  3 12:22:05 2026] DEBUG: Resized scratch buffer to size 27264
+[Tue Mar  3 12:22:05 2026] DEBUG: Resized scratch buffer to size 29184
+[Tue Mar  3 12:22:05 2026] DEBUG: Resized scratch buffer to size 31232
+[Tue Mar  3 12:22:05 2026] DEBUG: Resized scratch buffer to size 33152
+[Tue Mar  3 12:22:05 2026] DEBUG: Resized scratch buffer to size 34944
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 36992
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 39168
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 40960
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 42624
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 44544
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 46336
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 48256
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 50304
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 52224
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 54144
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 56192
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 58240
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 60160
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 61824
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 63744
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 65664
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 67584
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 69504
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 71552
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 73600
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 75520
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 77568
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 79744
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 81536
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 83456
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 85504
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 87296
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 89088
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 90880
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 92800
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 94848
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 96896
+[Tue Mar  3 12:22:06 2026] DEBUG: Resized scratch buffer to size 98944
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 100864
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 102656
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 104576
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 106624
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 108672
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 110720
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 112896
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 114944
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 117120
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 119296
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 121344
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 123520
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 125568
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 127616
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 129792
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 131712
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 133760
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 135936
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 137984
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 140160
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 142336
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 144384
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 146560
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 148608
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 150656
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 152704
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 154752
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 156672
+[Tue Mar  3 12:22:07 2026] DEBUG: Resized scratch buffer to size 158592
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 160512
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 162560
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 164608
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 166528
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 168320
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 170240
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 172160
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 174336
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 176384
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 178560
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 180608
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 182656
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 184704
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 186752
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 188800
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 190848
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 192896
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 194944
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 196992
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 199040
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 201216
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 203264
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 205184
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 207360
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 209408
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 211584
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 213760
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 215808
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 217856
+[Tue Mar  3 12:22:08 2026] DEBUG: Resized scratch buffer to size 219648
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 221440
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 223232
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 225152
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 227200
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 229248
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 231296
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 233216
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 235264
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 237312
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 239488
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 241664
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 243712
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 245888
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 248064
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 250112
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 252288
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 254208
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 256256
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 258176
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 260096
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 262144
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 264064
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 265984
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 268032
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 269952
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 271744
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 273664
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 275584
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 277632
+[Tue Mar  3 12:22:09 2026] DEBUG: Resized scratch buffer to size 279680
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 281856
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 283648
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 285184
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 287104
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 289152
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 291200
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 292992
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 294912
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 296832
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 298752
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 300800
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 302848
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 304768
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 306176
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 307840
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 309888
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 311936
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 313984
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 315904
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 317952
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 319872
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 321920
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 323840
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 325760
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 327296
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 328832
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 331008
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 333056
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 334976
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 336896
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 338816
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 340864
+[Tue Mar  3 12:22:10 2026] DEBUG: Resized scratch buffer to size 342784
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 344832
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 346880
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 348800
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 350848
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 352768
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 354688
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 356480
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 358272
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 360192
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 362112
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 364160
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 366080
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 368128
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 370048
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 372096
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 374144
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 376064
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 377984
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 379904
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 381952
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 384000
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 385920
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 387840
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 389760
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 391680
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 393728
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 395648
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 397568
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 399360
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 401152
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 403072
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 404864
+[Tue Mar  3 12:22:11 2026] DEBUG: Resized scratch buffer to size 406528
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 408576
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 410496
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 412544
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 414464
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 416512
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 418432
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 420352
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 422272
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 424320
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 425984
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 427776
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 429696
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 431616
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 433664
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 435584
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 437760
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 439808
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 441856
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 444032
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 446208
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 448256
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 450432
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 452608
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 454656
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 456704
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 458496
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 460416
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 462592
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 464384
+[Tue Mar  3 12:22:12 2026] DEBUG: Resized scratch buffer to size 466048
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 468096
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 470016
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 471808
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 473728
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 475648
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 477568
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 479488
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 481408
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 483328
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 485248
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 487168
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 489088
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 490880
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 492800
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 494720
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 496640
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 498688
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 500736
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 502912
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 504960
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 507136
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 509184
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 511104
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 512896
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 514816
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 516608
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 518272
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 520192
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 522240
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 524288
+[Tue Mar  3 12:22:13 2026] DEBUG: Resized scratch buffer to size 526336
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 528512
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 530560
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 532480
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 534272
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 536320
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 538112
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 540032
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 541952
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 543872
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 545664
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 547584
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 549504
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 551424
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 553344
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 555136
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 556800
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 558720
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 560768
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 562688
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 564608
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 566656
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 568576
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 570496
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 572672
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 574720
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 576896
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 579072
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 581120
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 583296
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 585088
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 586880
+[Tue Mar  3 12:22:14 2026] DEBUG: Resized scratch buffer to size 588800
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 590720
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 592768
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 594560
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 596352
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 598272
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 600192
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 602112
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 604032
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 605952
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 607872
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 610048
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 612224
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 614272
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 616448
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 618624
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 620672
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 622848
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 625024
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 627072
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 629248
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 631424
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 633472
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 635648
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 637696
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 639744
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 641664
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 643712
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 645632
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 647552
+[Tue Mar  3 12:22:15 2026] DEBUG: Resized scratch buffer to size 649600
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 651520
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 653184
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 655232
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 657280
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 659456
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 661504
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 663552
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 665728
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 667904
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 669952
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 672000
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 673920
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 675968
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 678016
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 680192
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 682368
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 684416
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 686592
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 688640
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 690688
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 692608
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 694528
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 696448
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 698368
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 700160
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 702080
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 704128
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 706048
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 707968
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 710016
+[Tue Mar  3 12:22:16 2026] DEBUG: Resized scratch buffer to size 712064
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 713984
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 716032
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 717952
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 720128
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 721920
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 723584
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 725632
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 727680
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 729856
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 732032
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 734080
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 736256
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 738432
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 740480
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 742656
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 744704
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 746752
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 748800
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 750720
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 752640
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 754048
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 755712
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 757888
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 759808
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 761856
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 763776
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 765696
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 767616
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 769664
+[Tue Mar  3 12:22:17 2026] DEBUG: Resized scratch buffer to size 771584
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 773632
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 775680
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 777728
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 779904
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 781952
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 784000
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 785920
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 788096
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 790272
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 792192
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 794240
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 796416
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 798592
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 800640
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 802816
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 804992
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 807040
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 809216
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 811392
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 813184
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 814976
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 817024
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 819072
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 821120
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 823168
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 824832
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 826496
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 828672
+[Tue Mar  3 12:22:18 2026] DEBUG: Resized scratch buffer to size 830592
+[Tue Mar  3 12:22:19 2026] DEBUG: Resized scratch buffer to size 832512
+[Tue Mar  3 12:22:19 2026] DEBUG: Resized scratch buffer to size 834688
+[Tue Mar  3 12:22:19 2026] DEBUG: Resized scratch buffer to size 836736
+[Tue Mar  3 12:22:19 2026] DEBUG: Resized scratch buffer to size 838912
+[Tue Mar  3 12:22:19 2026] DEBUG: Resized scratch buffer to size 841088
+[Tue Mar  3 12:22:19 2026] DEBUG: Resized scratch buffer to size 843136
+[Tue Mar  3 12:22:19 2026] DEBUG: Resized scratch buffer to size 845312
+[Tue Mar  3 12:22:19 2026] DEBUG: Resized scratch buffer to size 847360
+[Tue Mar  3 12:22:19 2026] DEBUG: Resized scratch buffer to size 849408
+[Tue Mar  3 12:22:19 2026] DEBUG: Resized scratch buffer to size 851456
+[Tue Mar  3 12:22:19 2026] DEBUG: Resized scratch buffer to size 853248
+[Tue Mar  3 12:22:19 2026] DEBUG: Resized scratch buffer to size 855040
+[Tue Mar  3 12:22:19 2026] DEBUG: Resized scratch buffer to size 856960
+[Tue Mar  3 12:22:19 2026] DEBUG: Resized scratch buffer to size 859008
+[Tue Mar  3 12:22:19 2026] DEBUG: Resized scratch buffer to size 860928
+[Tue Mar  3 12:22:19 2026] DEBUG: Resized scratch buffer to size 862848
+[Tue Mar  3 12:22:19 2026] ERROR: No texture created, can not get data
+[Tue Mar  3 12:22:19 2026] ERROR: No texture created, can not get data

@@ -1,0 +1,9 @@
+*.user
+
+# macOS junk
+.DS_Store
+**/.DS_Store
+
+# Local runtime/build artifacts
+build/
+settings.ini
