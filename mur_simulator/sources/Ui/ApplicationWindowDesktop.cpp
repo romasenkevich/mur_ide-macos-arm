@@ -36,6 +36,9 @@
 #include <QStyle>
 #include <QFile>
 #include <QWindow>
+#include <QCoreApplication>
+#include <QDir>
+#include <QFileInfo>
 
 #include <opencv2/opencv.hpp>
 
@@ -68,9 +71,55 @@ ApplicationWindowDesktop::ApplicationWindowDesktop(QWidget *parent) :
 void ApplicationWindowDesktop::InitializeEngine() {
     Urho3D::VariantMap parameters;
     parameters[Urho3D::EP_RESOURCE_PREFIX_PATHS] = "";
+    
+    // Compute resource paths relative to executable location
+    QString exeDir = QCoreApplication::applicationDirPath();
+    QDir exeDirObj(exeDir);
+    
+    // Data path: relative to executable (build/bin/Data or via symlink)
+    QString dataPath = exeDirObj.absoluteFilePath("Data");
+    // If Data doesn't exist in exe dir, try relative path to resources
+    if (!QFileInfo::exists(dataPath)) {
+        dataPath = exeDirObj.absoluteFilePath("../../resources/Data");
+    }
+    
+    // CoreData path: try multiple locations
+    QString coreDataPath;
+    // First try: relative to executable (build/bin/CoreData or via symlink)
+    QString tryPath1 = exeDirObj.absoluteFilePath("CoreData");
+    // Second try: relative to Urho3D (../../Urho3D/bin/CoreData)
+    QString tryPath2 = exeDirObj.absoluteFilePath("../../Urho3D/bin/CoreData");
+    // Third try: relative to workspace root (../../Urho3D/bin/CoreData from different location)
+    QString tryPath3 = exeDirObj.absoluteFilePath("../../../Urho3D/bin/CoreData");
+    
+    if (QFileInfo::exists(tryPath1)) {
+        coreDataPath = tryPath1;
+    } else if (QFileInfo::exists(tryPath2)) {
+        coreDataPath = tryPath2;
+    } else if (QFileInfo::exists(tryPath3)) {
+        coreDataPath = tryPath3;
+    } else {
+        // Fallback: use relative path and hope symlinks work
+        coreDataPath = "CoreData";
+    }
+    
+    // Build resource paths string: use absolute paths if found, otherwise fallback to relative
+    QString resourcePaths;
+    if (QFileInfo::exists(dataPath)) {
+        resourcePaths = QDir::toNativeSeparators(dataPath);
+    } else {
+        resourcePaths = "Data";
+    }
+    
+    if (QFileInfo::exists(coreDataPath) && !coreDataPath.isEmpty()) {
+        resourcePaths += ";" + QDir::toNativeSeparators(coreDataPath);
+    } else {
+        resourcePaths += ";CoreData";
+    }
+    
     // Prefer unpacked resources in build/bin so shader fixes are applied
     // immediately and do not depend on stale simulator.pck contents.
-    parameters[Urho3D::EP_RESOURCE_PATHS] = "Data;CoreData";
+    parameters[Urho3D::EP_RESOURCE_PATHS] = resourcePaths.toStdString().c_str();
     parameters[Urho3D::EP_AUTOLOAD_PATHS] = "";
     parameters[Urho3D::EP_WINDOW_RESIZABLE] = true;
     // HiDPI is disabled at app startup to keep backbuffer and viewport 1:1.
