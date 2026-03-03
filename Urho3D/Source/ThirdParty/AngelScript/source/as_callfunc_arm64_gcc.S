@@ -165,7 +165,7 @@ populateGPRegisterArgsEnd:
     ldr     x20, [sp,#0x10]
     ldp     fp, lr, [sp],#0x20
 
-    .cfi_restore lr
+    .cfi_restore x30
 	.cfi_restore fp
     .cfi_restore 20
 	.cfi_def_cfa_offset 0
@@ -193,7 +193,7 @@ CallARM64Ret128:
     ldr     x20, [sp,#0x10]
     ldp     fp, lr, [sp],#0x20
 
-    .cfi_restore lr
+    .cfi_restore x30
 	.cfi_restore fp
     .cfi_restore 20
 	.cfi_def_cfa_offset 0
@@ -218,7 +218,7 @@ CallARM64RetInMemory:
 
     ldp     fp, lr, [sp],#0x10
 
-    .cfi_restore lr
+    .cfi_restore x30
 	.cfi_restore fp
 	.cfi_def_cfa_offset 0
     ret
