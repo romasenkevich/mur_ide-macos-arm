@@ -23,10 +23,10 @@
 
 ## Как начать
 
-1. Клонируйте репозиторий (замените `<username>` на ваш GitHub-логин):
+1. Клонируйте репозиторий:
 
 ```bash
-git clone https://github.com/<username>/mur_ide-macos-arm.git
+git clone https://github.com/romasenkevich/mur_ide-macos-arm.git
 cd mur_ide-macos-arm
 ```
 
