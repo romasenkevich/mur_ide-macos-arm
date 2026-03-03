@@ -68,7 +68,8 @@ if (URHO3D_TRACY_PROFILING)
     add_subdirectory (Tracy)
 endif ()
 
-if (NOT ANDROID AND NOT ARM AND NOT WEB)
+# GLEW нужен для desktop OpenGL (macOS, Linux, Windows), но не для мобильных платформ (iOS, tvOS, Android) и не для Web
+if (NOT ANDROID AND NOT IOS AND NOT TVOS AND NOT WEB)
     if (URHO3D_OPENGL)
         add_subdirectory (GLEW)
     endif()
