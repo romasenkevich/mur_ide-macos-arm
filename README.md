@@ -1,4 +1,6 @@
-# MUR IDE macOS (ARM bundle)
+# MUR IDE for macOS (Apple Silicon)
+
+Unofficial build of MUR IDE for macOS ARM64 (M1/M2/M3).
 
 Этот репозиторий — готовый монорепозиторий для запуска MUR IDE и симулятора на macOS (Apple Silicon).
 Все необходимые проекты уже включены внутрь этого репо, ничего дополнительно докачивать из других репозиториев не нужно.
