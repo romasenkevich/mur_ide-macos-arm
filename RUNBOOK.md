@@ -66,6 +66,19 @@ cmake -S . -B build -G Ninja \
 cmake --build build -j
 ```
 
+**Важно:** После сборки убедитесь, что в `mur_simulator/build/bin/` есть символические ссылки или папки:
+- `Data` → должна указывать на `mur_simulator/resources/Data`
+- `CoreData` → должна указывать на `Urho3D/bin/CoreData`
+
+Если ссылок нет, создайте их:
+```bash
+cd <workspace>/mur_simulator/build/bin
+ln -sf ../../resources/Data Data
+ln -sf ../../../Urho3D/bin/CoreData CoreData
+```
+
+Код симулятора автоматически найдёт правильные пути к ресурсам относительно расположения бинарника, но наличие этих ссылок упрощает работу.
+
 ---
 
 ## 4) Сборка mur_ide
