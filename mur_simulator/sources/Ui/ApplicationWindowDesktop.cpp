@@ -39,6 +39,7 @@
 #include <QCoreApplication>
 #include <QDir>
 #include <QFileInfo>
+#include <QDebug>
 
 #include <opencv2/opencv.hpp>
 
@@ -87,10 +88,14 @@ void ApplicationWindowDesktop::InitializeEngine() {
     QString coreDataPath;
     // First try: relative to executable (build/bin/CoreData or via symlink)
     QString tryPath1 = exeDirObj.absoluteFilePath("CoreData");
-    // Second try: relative to Urho3D (../../Urho3D/bin/CoreData)
+    // Second try: Urho3D built in-source (../../Urho3D/bin/CoreData)
     QString tryPath2 = exeDirObj.absoluteFilePath("../../Urho3D/bin/CoreData");
-    // Third try: relative to workspace root (../../Urho3D/bin/CoreData from different location)
-    QString tryPath3 = exeDirObj.absoluteFilePath("../../../Urho3D/bin/CoreData");
+    // Third try: Urho3D built in build dir (../../Urho3D/build/bin/CoreData)
+    QString tryPath3 = exeDirObj.absoluteFilePath("../../Urho3D/build/bin/CoreData");
+    // Fourth try: one level higher workspace layout (../../../Urho3D/bin/CoreData)
+    QString tryPath4 = exeDirObj.absoluteFilePath("../../../Urho3D/bin/CoreData");
+    // Fifth try: one level higher with build dir (../../../Urho3D/build/bin/CoreData)
+    QString tryPath5 = exeDirObj.absoluteFilePath("../../../Urho3D/build/bin/CoreData");
     
     if (QFileInfo::exists(tryPath1)) {
         coreDataPath = tryPath1;
@@ -98,6 +103,10 @@ void ApplicationWindowDesktop::InitializeEngine() {
         coreDataPath = tryPath2;
     } else if (QFileInfo::exists(tryPath3)) {
         coreDataPath = tryPath3;
+    } else if (QFileInfo::exists(tryPath4)) {
+        coreDataPath = tryPath4;
+    } else if (QFileInfo::exists(tryPath5)) {
+        coreDataPath = tryPath5;
     } else {
         // Fallback: use relative path and hope symlinks work
         coreDataPath = "CoreData";
@@ -116,6 +125,13 @@ void ApplicationWindowDesktop::InitializeEngine() {
     } else {
         resourcePaths += ";CoreData";
     }
+
+    qDebug() << "[ApplicationWindowDesktop] exeDir =" << exeDir;
+    qDebug() << "[ApplicationWindowDesktop] Data path =" << dataPath
+             << "exists =" << QFileInfo::exists(dataPath);
+    qDebug() << "[ApplicationWindowDesktop] CoreData path candidate =" << coreDataPath
+             << "exists =" << QFileInfo::exists(coreDataPath);
+    qDebug() << "[ApplicationWindowDesktop] Final EP_RESOURCE_PATHS =" << resourcePaths;
     
     // Prefer unpacked resources in build/bin so shader fixes are applied
     // immediately and do not depend on stale simulator.pck contents.
