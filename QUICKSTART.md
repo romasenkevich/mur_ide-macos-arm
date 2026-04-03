@@ -4,6 +4,8 @@
 
 ### Шпаргалка (подряд)
 
+Команды нужно вызывать строка за строкой
+
 ```bash
 export ROOT="$(pwd)"
 brew update && brew install cmake ninja pkg-config qt opencv glfw python@3.11 zmq
