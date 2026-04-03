@@ -136,9 +136,11 @@ void ApplicationWindowDesktop::InitializeEngine() {
     // Prefer unpacked resources in build/bin so shader fixes are applied
     // immediately and do not depend on stale simulator.pck contents.
     parameters[Urho3D::EP_RESOURCE_PATHS] = resourcePaths.toStdString().c_str();
-    // На некоторых версиях macOS драйвер лучше работает в режиме GL2/совместимости.
-    // Это повышает шанс успешного создания контекста, особенно на новых системах.
-    parameters[Urho3D::EP_FORCE_GL2] = true;
+    // Не форсировать GL2 на macOS: при GL2 Urho3D не включает GLSL 150 / GL3 в преамбуле шейдеров,
+    // а стандартные шейдеры CoreData (Samplers.glsl, постобработка) используют sampler3D — массовый
+    // провал компиляции («sampler3D: syntax error»), сцена не рисуется.
+    // Запрашиваем GL 3.2 core; если контекст не создастся, Urho3D сам откатится на GL2 (OGLGraphics.cpp).
+    parameters[Urho3D::EP_FORCE_GL2] = false;
     parameters[Urho3D::EP_AUTOLOAD_PATHS] = "";
     parameters[Urho3D::EP_WINDOW_RESIZABLE] = true;
     // HiDPI is disabled at app startup to keep backbuffer and viewport 1:1.

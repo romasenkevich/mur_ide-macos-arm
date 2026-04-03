@@ -271,9 +271,29 @@ set_option(VIDEO_DIRECTFB      "Use DirectFB video driver" OFF)
 dep_option(DIRECTFB_SHARED     "Dynamically load directfb support" ON VIDEO_DIRECTFB OFF)
 set_option(VIDEO_DUMMY         "Use dummy video driver" ON)
 # Urho3D - hide OpenGL option from all non-desktop platforms
-dep_option(VIDEO_OPENGL        "Include OpenGL support" ON "NOT ANDROID AND NOT IOS AND NOT TVOS AND NOT ARM AND NOT WEB" OFF)
-# Urho3D - hide OpenGLES option from all desktop platforms, although a few of them appears to have the necessary header file to build SDL OpenGLES video driver
-dep_option(VIDEO_OPENGLES      "Include OpenGL ES support" ON "ANDROID OR IOS OR TVOS OR ARM OR WEB" OFF)
+# Urho3D/macOS ARM64: toolchain sets ARM=TRUE for __aarch64__, but desktop Mac needs NSOpenGL (VIDEO_OPENGL), else
+# SDL_CreateWindowFrom(..., SDL_WINDOW_OPENGL) fails with "No OpenGL support in video driver" (mur_simulator + Qt).
+# cmake_dependent_option() cannot take a parenthesized compound expression here; use precomputed flags.
+set (_SDL_DEP_VIDEO_OPENGL OFF)
+if (NOT ANDROID AND NOT IOS AND NOT TVOS AND NOT WEB)
+    if (NOT ARM OR (APPLE AND NOT IOS AND NOT TVOS))
+        set (_SDL_DEP_VIDEO_OPENGL ON)
+    endif ()
+endif ()
+cmake_dependent_option (VIDEO_OPENGL "Include OpenGL support" ON _SDL_DEP_VIDEO_OPENGL OFF)
+set (_SDL_DEP_VIDEO_OPENGLES OFF)
+if (ANDROID OR IOS OR TVOS OR WEB)
+    set (_SDL_DEP_VIDEO_OPENGLES ON)
+elseif (ARM)
+    set (_SDL_APPLE_DESKTOP OFF)
+    if (APPLE AND NOT IOS AND NOT TVOS)
+        set (_SDL_APPLE_DESKTOP ON)
+    endif ()
+    if (NOT _SDL_APPLE_DESKTOP)
+        set (_SDL_DEP_VIDEO_OPENGLES ON)
+    endif ()
+endif ()
+cmake_dependent_option (VIDEO_OPENGLES "Include OpenGL ES support" ON _SDL_DEP_VIDEO_OPENGLES OFF)
 # Urho3D - only make PTHREADS option available on UNIX-like platforms
 dep_option(PTHREADS            "Use POSIX threads for multi-threading" ON UNIX OFF)
 dep_option(PTHREADS_SEM        "Use pthread semaphores" ON PTHREADS OFF)
