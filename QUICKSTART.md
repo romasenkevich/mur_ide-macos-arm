@@ -1,5 +1,23 @@
 # MUR IDE — краткая инструкция
 
+**Все команды — из корня репозитория** (рядом с `mur_ide/`, `Urho3D/`, `start_ide`).
+
+### Шпаргалка (подряд)
+
+```bash
+export ROOT="$(pwd)"
+brew update && brew install cmake ninja pkg-config qt opencv glfw python@3.11 zmq
+cd "./Urho3D" && cmake -S . -B build -G Ninja && cmake --build build -j && cd ..
+cd "./mur_simulator" && cmake -S . -B build -G Ninja -DURHO3D_HOME="$ROOT/Urho3D/build" && cmake --build build -j && cd ..
+cd "./mur_ide" && cmake -S . -B build -G Ninja -DCMAKE_PREFIX_PATH="$(brew --prefix qt)" && cmake --build build -j && cd ..
+cd "./pymurapi" && python3 -m pip install -e . && cd ..
+cd "$ROOT" && ./start_ide    # или: ./start_simulator
+```
+
+Ниже то же самое с пояснениями и ссылкой на полный runbook.
+
+---
+
 Ниже — **порядок действий** и **запуск**. Подробности, отладка и типичные ошибки — в [RUNBOOK.md](RUNBOOK.md).
 
 Все команды выполняйте из **корня репозитория** (папка, где лежат `mur_ide/`, `Urho3D/`, `start_ide`). В примерах это `$ROOT`.
