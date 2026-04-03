@@ -2,10 +2,43 @@
 #include "SettingsController.hxx"
 #include "Application.hxx"
 #include "ApplicationLogger.hxx"
+#include <QApplication>
 #include <QDebug>
+#include <QDir>
 #include <QFileInfo>
 
 namespace Ide::Ui {
+
+namespace {
+
+// На Unix QProcess вызывает execvp: путь без символа '/' ищется в PATH, а не в текущем каталоге.
+// Настройка "mur-ide.simulator" из корня mur_ide иначе даёт ENOENT при запуске из build/.
+QString resolveSimulatorPath(QString sim_path)
+{
+    QFileInfo fi(sim_path);
+    if (fi.isAbsolute())
+        return fi.absoluteFilePath();
+
+    if (!sim_path.contains(QLatin1Char('/')))
+    {
+        const QString appDir = QApplication::applicationDirPath();
+        const QString nextToExe = QDir(appDir).absoluteFilePath(sim_path);
+        const QString besideBuild = QDir(appDir).absoluteFilePath(QStringLiteral("../") + sim_path);
+        if (QFileInfo::exists(nextToExe))
+            return QFileInfo(nextToExe).absoluteFilePath();
+        if (QFileInfo::exists(besideBuild))
+            return QFileInfo(besideBuild).absoluteFilePath();
+    }
+    else
+    {
+        const QString abs = QDir::current().absoluteFilePath(sim_path);
+        if (QFileInfo::exists(abs))
+            return QFileInfo(abs).absoluteFilePath();
+    }
+    return sim_path;
+}
+
+} // namespace
 
 SimulatorController *SimulatorController::instance = nullptr;
 qml::RegisterType<SimulatorController> SimulatorController::Register;
@@ -50,7 +83,8 @@ void SimulatorController::run()
         return;
     }
 
-    auto sim_path = Ide::Ui::SettingsController::instance->getSimulatorPath();
+    auto sim_path = resolveSimulatorPath(
+        Ide::Ui::SettingsController::instance->getSimulatorPath());
     ApplicationLogger::instance->addEntry("Starting simulator...");
     ApplicationLogger::instance->addEntry("Simulator: " + sim_path);
 
