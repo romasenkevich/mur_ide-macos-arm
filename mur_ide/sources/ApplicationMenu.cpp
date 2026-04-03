@@ -10,6 +10,7 @@
 #include "TextIO.hxx"
 
 #include <QDesktopServices>
+#include <QDir>
 #include <QMenuBar>
 #include <QApplication>
 
@@ -32,10 +33,21 @@ void ApplicationMenu::Create() {
 
 void ApplicationMenu::init()
 {
-    m_examples = IO::fileNamesFromDir(Application::instance->getResourcesDirectory()
-                                             + "/examples/",
-                                         {"*.py"},
-                                         IO::FileSuffix::On);
+    const QString examplesRoot = Application::instance->getResourcesDirectory() + "/examples/";
+    m_examples.clear();
+
+    QDir examplesDir(examplesRoot);
+    for (const QFileInfo &fi : examplesDir.entryInfoList(QStringList() << "*.py", QDir::Files)) {
+        m_examples.append(fi.fileName());
+    }
+    for (const QFileInfo &subDirInfo :
+         examplesDir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot)) {
+        QDir subDir(subDirInfo.absoluteFilePath());
+        for (const QFileInfo &py : subDir.entryInfoList(QStringList() << "*.py", QDir::Files)) {
+            m_examples.append(subDirInfo.fileName() + "/" + py.fileName());
+        }
+    }
+
     m_examples.sort();
 }
 
