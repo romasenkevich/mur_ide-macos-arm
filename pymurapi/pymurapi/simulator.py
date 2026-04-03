@@ -85,8 +85,8 @@ class Simulator(api.MurApiBase, threading.Thread):
         self.start()
 
     def _update(self):
-        front_image_jpg = np.fromstring(self.front_socket.recv(), dtype='uint8')
-        bottom_image_jpg = np.fromstring(self.bottom_socket.recv(), dtype='uint8')
+        front_image_jpg = np.frombuffer(self.front_socket.recv(), dtype=np.uint8)
+        bottom_image_jpg = np.frombuffer(self.bottom_socket.recv(), dtype=np.uint8)
 
         data = self.mcu_socket.recv()
 

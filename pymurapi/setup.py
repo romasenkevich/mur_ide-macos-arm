@@ -8,4 +8,5 @@ setup(name='pymurapi',
       author_email='support@robocenter.org',
       license='MIT',
       packages=['pymurapi'],
-      zip_safe=False, install_requires=['pyzmq', 'numpy'])
+      zip_safe=False,
+      install_requires=['pyzmq', 'numpy', 'opencv-python'])

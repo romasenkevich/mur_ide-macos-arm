@@ -1,153 +1,87 @@
-# Журнал: симулятор запускается, сцена / окно не отображаются
+# Журнал правок: симулятор, IDE, Python (macOS ARM)
 
-Дата разбора: 2026-04-04. Окружение: macOS Apple Silicon, репозиторий `mur_ide-macos-arm`.
-
----
-
-## 1) Симптомы (как у пользователя)
-
-- `./start_simulator` или запуск из IDE: приложение стартует, но **3D-сцена не видна** / «пустой» рендер.
-- В логе (`simulator.log` или вывод в терминал) в начале есть:
-
-  `ERROR: Could not create window, root cause: 'No OpenGL support in video driver'`
-
-- Далее сыпятся предупреждения вида **device is lost**, **Texture load while device is lost** — это **следствие**: контекст OpenGL так и не был создан.
-
-Установка дополнительных brew-пакетов **не заменяет** отсутствие поддержки OpenGL **внутри собранной SDL**, с которой линкуется Urho3D.
+Репозиторий: `mur_ide-macos-arm`. Файл ведётся как **история решённых проблем** и **что именно менялось в коде/доках**. Дата последнего обновления: 2026-04-04.
 
 ---
 
-## 2) Корневая причина (диагностика)
+## 1. Симулятор: «No OpenGL support in video driver», пустой экран
 
-1. Сообщение `'No OpenGL support in video driver'` выставляется в SDL, когда для текущего video driver **нет** `GL_CreateContext`, а окно запрашивают с флагом `SDL_WINDOW_OPENGL` (см. `Urho3D/Source/ThirdParty/SDL/src/video/SDL_video.c`, ветка `SDL_CreateWindowFrom`).
+**Симптом:** `./start_simulator` стартует, но нет 3D; в логе `Could not create window… No OpenGL support in video driver`.
 
-2. MUR Simulator на macOS встраивает окно Qt и инициализирует GL через этот путь — нужен **десктопный OpenGL (CGL / NSOpenGL)**, а не только GLES.
+**Причина:** В SDL внутри Urho3D опция `VIDEO_OPENGL` отключалась для любого `ARM` (в т.ч. Apple Silicon). Для встраивания окна Qt нужен desktop OpenGL; без него у Cocoa-драйвера SDL нет `GL_CreateContext`.
 
-3. В **встроенной SDL Urho3D** опция CMake `VIDEO_OPENGL` была завязана на условие **`NOT ARM`**. На Apple Silicon компилятор определяет **`__aarch64__`**, Urho3D помечает **`ARM=TRUE`**, поэтому на Mac ARM **`VIDEO_OPENGL` оказывался OFF**, Cocoa-слой собирался **без** полноценной ветки OpenGL → `GL_CreateContext == NULL` → ошибка выше.
+**Исправление:** `Urho3D/Source/ThirdParty/SDL/CMakeLists.txt` — предвычисляемые флаги и `cmake_dependent_option`, чтобы на **Apple desktop** при aarch64 включался `VIDEO_OPENGL`, а GLES не подменял этот сценарий.
 
-4. Параллельно `VIDEO_OPENGLES` включался для **любого** ARM, что соответствовало мобильным целям, но **не отменяло** необходимость desktop GL для сценария Qt + foreign window на macOS.
-
-Итог: это **ошибка конфигурации сборки SDL под macOS ARM**, а не «не хватает драйвера» в системе.
+**Действия:** `rm -rf Urho3D/build`, пересборка Urho3D, затем `mur_simulator` с корректным `URHO3D_HOME` (путь к `Urho3D/build`).
 
 ---
 
-## 3) Исправление в коде (что сделано в репозитории)
+## 2. Симулятор: окно есть, шейдеры не компилируются (`sampler3D`)
 
-Файл: `Urho3D/Source/ThirdParty/SDL/CMakeLists.txt`
+**Симптом:** Рендерер инициализируется, но лавина `Failed to compile pixel shader` / `'sampler3D' : syntax error`.
 
-- Вместо одной строки `dep_option(..., "длинное выражение со скобками", ...)` используются **предвычисленные флаги** `_SDL_DEP_VIDEO_OPENGL` / `_SDL_DEP_VIDEO_OPENGLES` и вызовы `cmake_dependent_option(...)`: у `cmake_dependent_option` четвёртый аргумент **не принимает** составное выражение со скобками так, как ожидалось при первой попытке патча (CMake завершался ошибкой `Unknown arguments specified`).
+**Причина:** В `mur_simulator/sources/Ui/ApplicationWindowDesktop.cpp` было `EP_FORCE_GL2 = true`. В режиме GL2 Urho3D не включает GLSL 150 / `GL3` в преамбуле шейдеров, а шейдеры CoreData используют `sampler3D`.
 
-- **`VIDEO_OPENGL`**: включается, если не Android/iOS/tvOS/web **и** при этом либо не ARM, либо **Apple desktop** (`APPLE AND NOT IOS AND NOT TVOS`) — то есть **macOS на Apple Silicon** снова получает desktop OpenGL (NSOpenGL/CGL).
+**Исправление:** `EP_FORCE_GL2 = false` (запрос GL 3.2 core; при неудаче движок сам откатывается к GL2).
 
-- **`VIDEO_OPENGLES`**: для **Apple desktop** на ARM **не** включается автоматически только из-за ARM; для Linux ARM, iOS и т.д. поведение сохраняется.
-
-Проверка после `cmake`: в `Urho3D/build/CMakeCache.txt` должно быть `VIDEO_OPENGL:BOOL=ON` и `HAVE_VIDEO_OPENGL:INTERNAL=1`.
+**Ресурс:** `mur_simulator/resources/Data/Materials/Environment/WaterTop.xml` — путь к текстуре `Textures/Water/WaterNoise.dds` → `Textures/Water/WaterNoise.dds`.
 
 ---
 
-## 4) Что нужно сделать у себя после обновления файла
+## 3. IDE: запуск симулятора — `execve: No such file or directory`
 
-Пересобрать цепочку, чтобы в `libUrho3D.a` попала SDL с включённым desktop OpenGL:
+**Симптом:** В логе IDE `Simulator: mur-ide.simulator`, затем `Child process set up failed: execve: No such file or directory`.
 
-1. Удалить (или пересоздать) каталог сборки Urho3D, чтобы CMake не тянул старые кэшированные флаги SDL:
+**Причина:** На Unix `QProcess` использует `execvp`: имя **без символа `/`** ищется в **PATH**, а не рядом с исполняемым файлом.
 
-   ```bash
-   cd "/Users/roman/Documents/MUR IDE"   # корень репозитория
-   rm -rf Urho3D/build
-   ```
+**Исправление:** `mur_ide/sources/SimulatorController.cpp` — функция `resolveSimulatorPath()`: для имён без `/` подставляется абсолютный путь к `mur-ide.simulator` относительно `applicationDirPath()` и `../` (типичная схема `mur_ide/build/mur_ide` + `mur_ide/mur-ide.simulator`).
 
-2. Собрать Urho3D заново:
-
-   ```bash
-   cd Urho3D
-   cmake -S . -B build -G Ninja
-   cmake --build build -j
-   cd ..
-   ```
-
-3. Пересобрать симулятор (он линкуется с Urho3D):
-
-   ```bash
-   cd mur_simulator
-   rm -rf build
-   cmake -S . -B build -G Ninja -DURHO3D_HOME="$PWD/../Urho3D/build"
-   cmake --build build -j
-   cd ..
-   ```
-
-   (При необходимости подставьте абсолютный `URHO3D_HOME`, см. QUICKSTART/RUNBOOK.)
-
-4. При желании пересобрать IDE (если меняли только движок/симулятор — не обязательно):
-
-   ```bash
-   cd mur_ide
-   cmake -S . -B build -G Ninja -DCMAKE_PREFIX_PATH="$(brew --prefix qt)"
-   cmake --build build -j
-   cd ..
-   ```
-
-5. Проверка:
-
-   ```bash
-   ./start_simulator
-   ```
-
-   В логе **не** должно быть `No OpenGL support in video driver`; окно сцены должно нормально отрисовываться.
+**Действия:** Пересборка **только** `mur_ide`.
 
 ---
 
-## 5) Следующий симптом: окно есть, камеры есть, сцена «пустая» / массовые ошибки шейдеров
+## 4. Python: `ModuleNotFoundError: No module named 'cv2'`
 
-**Дата:** 2026-04-04 (продолжение).
+**Симптом:** Запуск примеров из IDE, падение при `import pymurapi` → `cv2`.
 
-### Симптомы
+**Причина:** `brew install opencv` даёт библиотеку для C++, не модуль Python. Нужен **`opencv-python`** в том же интерпретаторе, что использует IDE (`Paths/python` / `python3` в логе).
 
-- В логе **нет** `No OpenGL support in video driver`, движок пишет `Initialized renderer`, виден адаптер (например Apple M2).
-- Появляются миниатюры камер, но основной вид **не** показывает нормальную сцену.
-- В логе десятки строк вида:
+**Исправление в репо:** `pymurapi/setup.py` — в `install_requires` добавлен `opencv-python`.
 
-  `Failed to compile pixel shader ... ERROR: ... 'sampler3D' : syntax error`
+**Действия у себя:** `python3 -m pip install opencv-python` (или тот же полный путь к Python, что в IDE); при необходимости `pip install -e pymurapi` заново.
 
-- Дополнительно может быть: `Could not find resource Textures/WaterNoise.dds`.
-
-### Причина A — принудительный OpenGL 2
-
-В `mur_simulator/sources/Ui/ApplicationWindowDesktop.cpp` для десктопа выставлялось **`EP_FORCE_GL2 = true`**, чтобы облегчить создание контекста на части macOS. После починки SDL это уже не обязательно.
-
-При **GL2** Urho3D **не** добавляет в шейдеры `#version 150` и макрос **`GL3`** (см. `OGLShaderVariation.cpp`: это завязано на `Graphics::GetGL3Support()`). Текущие шейдеры из CoreData (`Samplers.glsl` и др.) объявляют **`uniform sampler3D`** / используют возможности, которые в таком режиме компилятор macOS отклоняет — отсюда каскад ошибок и отсутствие нормального рендера.
-
-**Исправление:** выставить **`parameters[Urho3D::EP_FORCE_GL2] = false`**, чтобы запрашивался контекст **OpenGL 3.2 core** (на Apple Silicon он обычно доступен). Если контекст GL3 не создастся, движок **сам** пробует откат на GL2 (`OGLGraphics.cpp` после неудачного `SDL_GL_CreateContext`).
-
-### Причина B — неверный путь к текстуре воды
-
-В `mur_simulator/resources/Data/Materials/Environment/WaterTop.xml` было указано `Textures/WaterNoise.dds`, тогда как файл лежит как **`Textures/Water/WaterNoise.dds`**. Исправить путь в XML.
-
-### Действия после правок
-
-Пересобрать **только симулятор** (Urho3D пересобирать не нужно, если не трогали SDL):
-
-```bash
-cd "/Users/roman/Documents/MUR IDE/mur_simulator"
-cmake --build build -j
-```
-
-Проверка: `./start_simulator` — в логе **не** должно быть массовых `Failed to compile pixel shader` с `sampler3D`; сцена должна отображаться.
+**Документация:** `QUICKSTART.md` — раздел «Python и примеры в IDE».
 
 ---
 
-## 6) Прочее
+## 5. Python 3.14 / NumPy: `fromstring` binary mode removed
 
-- Предупреждение Qt про locale `C` / US-ASCII: при желании выставить UTF-8 локаль в окружении; на рендер обычно не влияет.
-- Проблемы с `URHO3D_HOME` при cmake — см. QUICKSTART: путь к **`…/Urho3D/build`** из корня репозитория.
+**Симптом:** В терминале при `./start_ide` и работе pymurapi с симулятором поток падает с:
+
+`ValueError: The binary mode of fromstring is removed, use frombuffer instead`
+
+(стек в `pymurapi/pymurapi/simulator.py`, `_update`.)
+
+**Причина:** В новых версиях NumPy убрали двоичный режим `numpy.fromstring`; для массива байт из ZMQ нужен **`numpy.frombuffer`**.
+
+**Исправление:** `pymurapi/pymurapi/simulator.py` — строки приёма JPEG с камер:
+
+- было: `np.fromstring(self.front_socket.recv(), dtype='uint8')` (и для bottom);
+- стало: `np.frombuffer(..., dtype=np.uint8)`.
+
+**Действия:** Переустановка pymurapi не обязательна при editable-режиме — достаточно сохранённых файлов; перезапустить IDE/скрипт.
 
 ---
 
-## 7) Объединённый чеклист
+## 6. Краткий указатель файлов
 
-| Этап | Симптом / цель | Действие |
-|------|----------------|----------|
-| A | `No OpenGL support in video driver` | Патч SDL `VIDEO_OPENGL` для macOS ARM + пересборка Urho3D и симулятора |
-| B | `sampler3D` / провал компиляции шейдеров при живом GL | `EP_FORCE_GL2 = false` в `ApplicationWindowDesktop.cpp` + пересборка симулятора |
-| C | `Textures/WaterNoise.dds` not found | Путь в `WaterTop.xml` → `Textures/Water/WaterNoise.dds` |
+| Тема | Файл(ы) |
+|------|---------|
+| SDL OpenGL на Mac ARM | `Urho3D/Source/ThirdParty/SDL/CMakeLists.txt` |
+| GL3 / шейдеры симулятора | `mur_simulator/sources/Ui/ApplicationWindowDesktop.cpp` |
+| Текстура воды | `mur_simulator/resources/Data/Materials/Environment/WaterTop.xml` |
+| Запуск симулятора из IDE | `mur_ide/sources/SimulatorController.cpp` |
+| Зависимости pymurapi | `pymurapi/setup.py`, `pymurapi/pymurapi/simulator.py` |
+| Краткая инструкция | `QUICKSTART.md` |
 
 Конец журнала.
