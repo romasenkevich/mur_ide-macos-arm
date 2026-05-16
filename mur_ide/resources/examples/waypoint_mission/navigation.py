@@ -26,13 +26,41 @@ def calculate_target_yaw(x_cur: float, y_cur: float, x_tgt: float, y_tgt: float)
     """
     Расчёт целевого курса в градусах по координатам текущей и целевой точки.
 
-    Угол считается от оси X, положительное направление — против часовой стрелки.
+    В сцене MUR горизонталь — плоскость XZ (Y — вертикаль); в CSV маршрута поля X и Y
+    соответствуют мировым X и Z. Курс из симулятора — поворот вокруг оси Y (get_yaw);
+    при нулевом курсе «вперёд» аппарата направлено вдоль +Z. Тогда азимут на цель:
+    atan2(dX, dZ) в градусах.
     """
     dx = x_tgt - x_cur
-    dy = y_tgt - y_cur
-    yaw_rad = math.atan2(dy, dx)
+    dz = y_tgt - y_cur
+    yaw_rad = math.atan2(dx, dz)
     yaw_deg = math.degrees(yaw_rad)
     return yaw_deg
+
+
+def calculate_target_yaw_near_aware(
+    x_cur: float,
+    y_cur: float,
+    x_tgt: float,
+    y_tgt: float,
+    current_yaw_deg: float,
+    degenerate_tol_m: float = 0.08,
+) -> float:
+    """
+    Целевой курс по вектору к цели (как ``calculate_target_yaw``).
+
+    Запасной вариант **только** если вектор к цели почти нулевой: ``dx²+dz² < tol²``.
+    Тогда ``atan2(0,0)`` даёт 0°, что ломает регулятор курса у самой точки.
+
+    Важно: **не** сравнивать с «расстоянием до точки в целом» (например 0.4 м):
+    при подходе к (0,0) с боку нужен нормальный bearing (≈180°), иначе курс
+    замораживается на текущем и расстояние до цели начинает расти.
+    """
+    dx = x_tgt - x_cur
+    dz = y_tgt - y_cur
+    if dx * dx + dz * dz < degenerate_tol_m * degenerate_tol_m:
+        return float(current_yaw_deg)
+    return calculate_target_yaw(x_cur, y_cur, x_tgt, y_tgt)
 
 
 def normalize_angle(angle_deg: float) -> float:
@@ -61,4 +89,5 @@ def distance_to_waypoint(
     x, y = position
     wx, wy, _ = waypoint
     return calculate_distance(x, y, wx, wy)
+    
     

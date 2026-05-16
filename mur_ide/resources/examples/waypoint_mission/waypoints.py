@@ -10,7 +10,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import List, Tuple, Optional, Iterable
 
@@ -29,9 +29,9 @@ def default_waypoints() -> List[Waypoint]:
     """
     return [
         (0.0, 0.0, 2.0),
-        (5.0, 0.0, 2.0),
-        (5.0, 5.0, 2.0),
-        (0.0, 5.0, 2.0),
+        (2.0, 0.0, 2.0),
+        (2.0, 2.0, 2.0),
+        (0.0, 2.0, 2.0),
     ]
 
 
@@ -94,15 +94,22 @@ class WaypointManager:
     Поддерживает:
     – несколько циклов прохождения;
     – получение текущей точки;
-    – переход к следующей точке при достижении предыдущей.
+    – переход к следующей точке при достижении предыдущей (внутренний порог + кольцо подхода).
     """
 
     waypoints: List[Waypoint]
     capture_radius: float = 0.5
+    # Допуск к радиусу схватывания (м): точка считается достигнутой, если
+    # distance <= capture_radius + reach_slack_m (одометрия «дрожит» у цели).
+    reach_slack_m: float = 0.05
+    # Порог «были снаружи» (м), меньше внутреннего схвата: hysteresis между «подошли» и «схватили».
+    approach_ring_m: float = 0.06
     cycles: int = 1
 
     _current_index: int = 0
     _completed_cycles: int = 0
+    # True, если расстояние хотя бы раз превышало _outside_approach_threshold() (см. advance_if_reached).
+    _was_outside_capture_for_current: bool = field(default=False, repr=False)
 
     def current(self) -> Optional[Waypoint]:
         """Возвращает текущую целевую точку или None, если маршрут завершён."""
@@ -116,18 +123,46 @@ class WaypointManager:
         """Возвращает True, если все циклы прохождения маршрута завершены."""
         return self.current() is None
 
+    def _reach_threshold(self) -> float:
+        return self.capture_radius + max(0.0, self.reach_slack_m)
+
+    def _outside_approach_threshold(self) -> float:
+        """Порог «дальше кольца подхода»; должен быть < _reach_threshold()."""
+        inner = self._reach_threshold()
+        raw = self.approach_ring_m
+        if raw >= inner:
+            return max(0.04, inner * 0.35)
+        return raw
+
     def advance_if_reached(self, distance_to_current: float) -> None:
         """
-        Переходит к следующей точке, если расстояние до текущей меньше радиуса схватывания.
+        Переходит к следующей точке, если ``distance <= capture_radius + reach_slack``.
+
+        Перед этим нужно хотя бы раз уйти **за предел approach_ring_m** (типично ~6 см),
+        иначе при старте в (0,0) на цели (0,0) сразу сработал бы переход. При колебаниях
+        одометрии у цели (3–11 см) внешнее кольцо меньше внутреннего: раз «вылезли» за 6 см,
+        можно схватить при возврате в 15 см.
         """
         if self.current() is None:
             return
 
-        if distance_to_current <= self.capture_radius:
-            self._current_index += 1
-            if self._current_index >= len(self.waypoints):
-                self._current_index = 0
-                self._completed_cycles += 1
+        r_in = self._reach_threshold()
+        r_out = self._outside_approach_threshold()
+
+        if distance_to_current > r_out:
+            self._was_outside_capture_for_current = True
+
+        if distance_to_current > r_in:
+            return
+
+        if not self._was_outside_capture_for_current:
+            return
+
+        self._was_outside_capture_for_current = False
+        self._current_index += 1
+        if self._current_index >= len(self.waypoints):
+            self._current_index = 0
+            self._completed_cycles += 1
 
     @property
     def progress(self) -> float:
@@ -148,4 +183,5 @@ def iter_waypoints(waypoints: Iterable[Waypoint]) -> Iterable[Waypoint]:
     """
     for wp in waypoints:
         yield wp
+        
         

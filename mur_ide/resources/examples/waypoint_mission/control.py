@@ -1,91 +1,69 @@
 """
-Модуль управления движением.
+Модуль управления движением (симулятор).
 
-Соответствует разделам 1.3, 3.4 ТЗ:
-– пропорциональные регуляторы для курса и глубины;
-– формирование команд для движителей.
+Согласован с официальными примерами `sim_yaw_preg.py` и `sim_depth_preg.py`:
+– курс: разница мощностей 0/1 как `res = er * (-0.8)`, базовая тяга как в sim_*;
+– глубина: `80 * (get_depth() - целевая)` на моторы 2 и 3, как в sim_depth_preg.
+
+На реальном аппарате (auv_yaw_preg / другие индексы моторов) этот модуль не подходит.
 """
 
 from __future__ import annotations
 
 from typing import Tuple
 
+from navigation import calculate_yaw_error
 
-# Диапазон допустимых значений мощности движителей в pymurapi
 MIN_POWER = -100
 MAX_POWER = 100
 
-# Базовая мощность для движения вперёд
-BASE_POWER = 50
+# Как в sim_test / sim_yaw_preg (не 50 — меньше разгон к стенам в малом бассейне)
+SIM_BASE_FORWARD = 40
 
-# Коэффициенты П‑регуляторов (могут подбираться экспериментально)
-KP_YAW = 1.5
-KP_DEPTH = 0.8
+# Как sim_yaw_preg: res = er * (-0.8); ограничиваем |res|, иначе при большой ошибке
+# m0/m1 упираются в ±100 и средняя тяга ~0 — аппарат крутится на месте.
+SIM_YAW_RES_GAIN = -0.8
+SIM_YAW_RES_ABS_MAX = 28.0
+
+# Как sim_depth_preg: power = 80 * (get_depth() - depth_to_set)
+SIM_DEPTH_GAIN = 80.0
 
 
 def clamp(value: float, lo: float, hi: float) -> float:
-    """Ограничение значения в заданном диапазоне."""
     return max(lo, min(hi, value))
 
 
-def yaw_control(yaw_error: float) -> float:
-    """
-    Управляющий сигнал регулятора курса.
-    Возвращает значение в условных единицах, которое затем
-    преобразуется в разность мощностей левого и правого движителей.
-    """
-    u = KP_YAW * yaw_error
-    # Ограничиваем, чтобы поворот не был слишком резким
-    return clamp(u, -50.0, 50.0)
-
-
-def depth_control(depth_error: float) -> float:
-    """
-    Управляющий сигнал регулятора глубины.
-    Положительное значение соответствует погружению, отрицательное – всплытию.
-    """
-    u = KP_DEPTH * depth_error
-    return clamp(u, -50.0, 50.0)
-
-
-def motor_commands(
-    yaw_u: float,
-    depth_u: float,
-    base_power: float = BASE_POWER,
+def sim_motor_commands(
+    current_yaw: float,
+    target_yaw_deg: float,
+    depth_measured: float,
+    depth_target: float,
+    base_forward: float = SIM_BASE_FORWARD,
 ) -> Tuple[int, int, int, int]:
     """
-    Формирование команд для четырёх движителей.
-
-    Предполагается конфигурация MiddleAUV:
-    – двигатели 0 и 1 – горизонтальные;
-    – двигатели 2 и 3 – вертикальные.
+    Четыре мощности для симулятора (моторы 0–3), в духе sim_yaw_preg + sim_depth_preg.
     """
-    # Дифференциальное управление по курсу
-    m0 = base_power - yaw_u  # левый горизонтальный
-    m1 = base_power + yaw_u  # правый горизонтальный
+    er = calculate_yaw_error(target_yaw_deg, current_yaw)
+    res = clamp(SIM_YAW_RES_GAIN * er, -SIM_YAW_RES_ABS_MAX, SIM_YAW_RES_ABS_MAX)
+    m0 = int(clamp(base_forward - res, MIN_POWER, MAX_POWER))
+    m1 = int(clamp(base_forward + res, MIN_POWER, MAX_POWER))
 
-    # Одинаковые команды для вертикальных движителей
-    m2 = depth_u
-    m3 = depth_u
+    depth_cmd = SIM_DEPTH_GAIN * (depth_measured - depth_target)
+    m2 = int(clamp(depth_cmd, MIN_POWER, MAX_POWER))
+    m3 = m2
 
-    return (
-        int(clamp(m0, MIN_POWER, MAX_POWER)),
-        int(clamp(m1, MIN_POWER, MAX_POWER)),
-        int(clamp(m2, MIN_POWER, MAX_POWER)),
-        int(clamp(m3, MIN_POWER, MAX_POWER)),
-    )
+    return (m0, m1, m2, m3)
 
 
 def apply_motor_commands(auv, commands: Tuple[int, int, int, int]) -> None:
-    """
-    Отправка команд на движители через API pymurapi.
-
-    Параметр auv – объект, полученный через mur.mur_init().
-    """
+    """Отправка команд; в симуляторе есть ещё мотор 4 — обнуляем, чтобы не копил мусор."""
     m0, m1, m2, m3 = commands
     auv.set_motor_power(0, m0)
     auv.set_motor_power(1, m1)
     auv.set_motor_power(2, m2)
     auv.set_motor_power(3, m3)
-    
+    try:
+        auv.set_motor_power(4, 0)
+    except AttributeError:
+        pass
     
