@@ -83,3 +83,4 @@ def plot_depth_over_time(
     plt.tight_layout()
     plt.savefig(output_path, dpi=300)
     plt.close()
+    
