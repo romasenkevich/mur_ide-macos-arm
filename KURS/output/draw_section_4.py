@@ -267,46 +267,70 @@ def poster_a1(traj, logs: Dict[str, Path]) -> None:
     print(f"OK: {p.name}")
 
 
+def _fmt_m(v: float) -> str:
+    """Десятичная запятая для вставки в ПЗ."""
+    return f"{v:.2f}".replace(".", ",")
+
+
 def table_41(stats: Dict[str, Tuple[float, float, float, float]]) -> None:
     lines = [
         "Таблица 4.1 – Показатели точности движения по типам маршрута",
         "",
-        "| Вид маршрута   | RMSE, м | Max откл., м | Min откл., м |",
-        "|----------------|---------|--------------|--------------|",
+        "| Вид маршрута   | RMSE, м | Максимальное отклонение, м | Минимальное отклонение, м |",
+        "|----------------|---------|----------------------------|---------------------------|",
     ]
-    rows = []
+    rows_plot = []
     for title, _, _ in SCENARIOS:
         rmse, max_d, min_d, _ = stats[title]
         label = "Ломаная линия" if title == "Ломаная" else title
-        lines.append(f"| {label:<14} | {rmse:>7.2f} | {max_d:>12.2f} | {min_d:>12.2f} |")
-        rows.append([label, f"{rmse:.2f}", f"{max_d:.2f}", f"{min_d:.2f}", TABLE_NOTES[title]])
+        lines.append(
+            f"| {label:<14} | {_fmt_m(rmse):>7} | {_fmt_m(max_d):>26} | {_fmt_m(min_d):>25} |"
+        )
+        rows_plot.append([label, _fmt_m(rmse), _fmt_m(max_d), _fmt_m(min_d)])
 
     txt = OUT_DIR / "04_таблица_4.1.txt"
     txt.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"OK: {txt.name}")
 
-    fig, ax = plt.subplots(figsize=(11.5, 3.2), dpi=DPI)
+    col_labels = [
+        "Вид маршрута",
+        "RMSE,\nм",
+        "Максимальное\nотклонение, м",
+        "Минимальное\nотклонение, м",
+    ]
+    fig, ax = plt.subplots(figsize=(10.2, 2.85), dpi=DPI)
     ax.axis("off")
-    table = ax.table(
-        cellText=rows,
-        colLabels=["Маршрут", "RMSE,\nм", "Max,\nм", "Min,\nм", "Примечание"],
+    tbl = ax.table(
+        cellText=rows_plot,
+        colLabels=col_labels,
         loc="center",
         cellLoc="center",
-        colWidths=[0.14, 0.08, 0.08, 0.08, 0.62],
+        colWidths=[0.28, 0.14, 0.29, 0.29],
     )
-    table.auto_set_font_size(False)
-    table.set_fontsize(10)
-    table.scale(1.0, 2.0)
-    for (row, col), cell in table.get_celld().items():
+    tbl.auto_set_font_size(False)
+    tbl.set_fontsize(11)
+    tbl.scale(1.0, 2.35)
+    for (row, col), cell in tbl.get_celld().items():
+        cell.set_edgecolor("#333333")
+        cell.set_linewidth(0.8)
         if row == 0:
-            cell.set_facecolor("#e8e8e8")
-            cell.set_text_props(fontweight="bold")
-        elif col in (0, 4):
-            cell.set_text_props(ha="left", fontsize=9.5 if col == 4 else 10)
-    png = OUT_DIR / "04_таблица_4.1.png"
-    fig.savefig(png, dpi=DPI, facecolor="white", bbox_inches="tight", pad_inches=0.15)
+            cell.set_facecolor("#e0e0e0")
+            cell.set_text_props(fontweight="bold", ha="center", va="center", fontsize=10)
+        elif col == 0:
+            cell.set_text_props(ha="left", va="center", fontsize=11)
+            cell.PAD = 0.08
+        else:
+            cell.set_text_props(ha="center", va="center", fontsize=11)
+
+    for path in (
+        OUT_DIR / "04_таблица_4.1.png",
+        OUT_DIR / "04_таблица_4.1.svg",
+        SCREEN_DIR / "таблица_4.1.png",
+    ):
+        path.parent.mkdir(parents=True, exist_ok=True)
+        fig.savefig(path, dpi=DPI, facecolor="white", bbox_inches="tight", pad_inches=0.12)
+        print(f"OK: {path}")
     plt.close(fig)
-    print(f"OK: {png.name}")
 
 
 def compare_regulators(traj) -> None:

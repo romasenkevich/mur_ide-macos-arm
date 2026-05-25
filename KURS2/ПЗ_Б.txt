@@ -1,0 +1,98 @@
+ПРИЛОЖЕНИЕ Б
+
+ИНСТРУКЦИЯ ПО ИСПОЛЬЗОВАНИЮ БИБЛИОТЕКИ
+
+
+1. Назначение
+
+В каталоге MUR_Object_Library собраны готовые 3D-объекты для учебных полигонов в симуляторе MUR IDE. Каждый объект — отдельный файл .mur_scene.
+
+
+2. Требования
+
+- Собранный mur_simulator и при необходимости MUR IDE (см. RUNBOOK.md в корне репозитория).
+- Опционально: редактор сцен Urho3D/bin/Editor.sh для правки объектов.
+
+
+3. Просмотр одного объекта
+
+1. Из корня репозитория запускается симулятор: ./start_simulator
+
+2. В меню выбирается Scene → Open (Ctrl+O).
+
+3. Указывается файл, например:
+   KURS2/MUR_Object_Library/Markers/marker_start_red.mur_scene
+
+4. Проверяется, что объект виден на дне бассейна.
+
+
+4. Копирование объекта в новую сцену
+
+Способ А — через редактор сцен
+
+1. Запуск редактора:
+   cd KURS2/MUR_Object_Library
+   ./tools/start_editor.sh
+
+2. Распаковка архива объекта:
+   unzip -d /tmp/obj Markers/marker_start_red.mur_scene
+
+3. В редакторе: File → Load scene или Load node as replicated — файл /tmp/obj/marker_start_red.xml.
+
+4. Выделяется узел LibraryObject с дочерними элементами.
+
+5. Edit → Copy node; в целевой сцене — Paste.
+
+6. Позиция и ориентация задаются Move, Scale, Rotate.
+
+7. File → Save scene as — сохранение XML.
+
+Способ Б — упаковка новой сцены
+
+В каталоге со сценой:
+
+echo '{"version": 1.0}' > Config.json
+zip -r my_polygon.mur_scene Config.json my_polygon.xml
+
+Готовый my_polygon.mur_scene открывается в симуляторе.
+
+
+5. Группировка составных объектов
+
+1. Добавляются примитивы: Create → Builtin object.
+2. Назначаются материалы Materials/Objects/Colors/...
+3. Узлы сводятся под родителем LibraryObject.
+4. Сцена сохраняется как один .mur_scene.
+
+
+6. Готовые учебные полигоны
+
+Examples/example_markers_course.mur_scene — курс маркеров.
+Examples/example_obstacle_lane.mur_scene — полоса препятствий.
+Examples/example_navigation_track.mur_scene — трасса с разметкой.
+
+
+7. Телеуправление аппаратом для проверки
+
+1. В симуляторе открывается учебная сцена.
+2. Включается Remote mode.
+3. Управление: W, A, S, D — горизонталь; Q, E — глубина; Z, X — дополнительные оси (зависит от сборки).
+
+
+8. Пересборка библиотеки из исходников
+
+cd KURS2/MUR_Object_Library
+python3 tools/build_library.py
+
+
+9. Устранение неполадок
+
+Сцена не открывается — проверяется версия симулятора и Config.json (version: 1.0).
+
+Объект чёрный — проверяется путь к материалу Materials/Objects/Colors/...
+
+Аппарат не реагирует — должен быть включён Remote mode.
+
+Редактор не запускается — требуется собранный Urho3D, наличие Urho3D/bin/Urho3DPlayer.
+
+Подробности: MUR_Object_Library/README.md.

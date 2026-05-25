@@ -1,57 +1,101 @@
-# MUR IDE for macOS (Apple Silicon)
+# MUR IDE — симулятор и скрипты (macOS ARM)
 
-Unofficial build of MUR IDE for macOS ARM64 (M1/M2/M3).
+Монорепозиторий MUR IDE и **mur_simulator** для macOS (Apple Silicon): запуск IDE, симулятора, примеров Python и вспомогательных скриптов курсовых (KURS, KURS2).
 
-Этот репозиторий — готовый монорепозиторий для запуска MUR IDE и симулятора на macOS (Apple Silicon).
-Все необходимые проекты уже включены внутрь этого репо, ничего дополнительно докачивать из других репозиториев не нужно.
+Сборка с нуля — один раз, в **[RUNBOOK.md](RUNBOOK.md)**. Ниже — только **запуск уже собранного**.
 
-## Что входит
+## Возможности
 
-В корне вы увидите:
+- Запуск **MUR IDE** и **симулятора** из корня репозитория
+- Примеры АНПА на Python (`mur_ide/resources/examples/`, в т.ч. миссия по waypoints)
+- Генерация графики и Word для курсового **KURS** (траектории)
+- Сборка библиотеки 3D-объектов и плакатов для **KURS2**
 
-- `mur_ide/` — сама IDE (Qt-приложение) с ресурсами и Python-примерами.
-- `mur_simulator/` — десктопный симулятор (Urho3D + Qt), который запускается из IDE.
-- `Urho3D/` — исходники и сборка Urho3D, настроенные под macOS ARM.
-- `Urho3D-1.7/` — старый исходный код Urho3D (историческая версия, сейчас не используется в основном сценарии).
-- `pymurapi/` — Python-библиотека `pymurapi`, устанавливается локально для работы примеров.
-- `RUNBOOK.md` — подробный пошаговый runbook по сборке и запуску всего комплекта на macOS.
-- `start_ide` — скрипт для запуска IDE из корня репозитория.
-- `start_simulator` — скрипт для запуска симулятора из корня репозитория.
+## Быстрый старт
 
-## Кому это нужно
-
-- Разработчикам, которые хотят **собрать и запускать MUR IDE + симулятор локально на macOS ARM** без поиска и склейки отдельных репозиториев.
-- Тем, кто отлаживает/допиливает рендер, интеграцию Qt6 + Urho3D + SDL на macOS.
-
-## Как начать
-
-1. Клонируйте репозиторий:
+Все команды — из корня репозитория (путь с пробелом в кавычках):
 
 ```bash
-git clone https://github.com/romasenkevich/mur_ide-macos-arm.git
-cd mur_ide-macos-arm
+cd "/path/to/MUR IDE"   # корень клона, кавычки из‑за пробела в имени
 ```
 
-2. Откройте `RUNBOOK.md` в корне — там есть **полная инструкция “с нуля”**:
-   - установка системных зависимостей (Homebrew, CMake, Ninja, Qt и т.д.);
-   - сборка `Urho3D` → `mur_simulator` → `mur_ide`;
-   - установка `pymurapi`;
-   - проверка, что примеры из `mur_ide/resources/examples` запускаются.
-3. После сборки IDE и симулятора можно запускать их прямо из корня репозитория:
+| Действие | Команда |
+|----------|---------|
+| IDE | `./start_ide` |
+| Симулятор | `./start_simulator` |
+| Пример в IDE | Открыть `mur_ide/resources/examples/waypoint_mission/waypoint_mission.py` → **F5** (нужен **Remote mode** в симуляторе) |
+
+Перед первым F5: симулятор собран, `pymurapi` установлен (см. RUNBOOK).
+
+## Симулятор: открыть сцену библиотеки (KURS2)
 
 ```bash
-./start_ide
 ./start_simulator
 ```
 
-4. Также симулятор можно стартовать из IDE (через меню запуска скрипта / симулятора).
+В окне: **Scene → Open** → файл, например:
 
-## Особенности именно этой версии
+`KURS2/MUR_Object_Library/Markers/marker_start_red.mur_scene`
 
-- Проект адаптирован под **macOS на ARM (Apple Silicon)**:
-  - поправлены define’ы и контекст OpenGL/OpenGL ES;
-  - внедрены фиксы для HiDPI/Retina и внешнего окна Qt (`SDL_CreateWindowFrom`, `NSView`, `Cocoa_GL_GetDrawableSize`);
-  - исправлены шейдеры и пути загрузки ресурсов, чтобы всё собиралось и рендерилось на macOS.
-- `.gitignore` и структура каталога настроены под локальные сборки, так что артефакты (`build/`, `settings.ini`, `.DS_Store` и т.п.) не попадают в коммиты.
+## Скрипты KURS (траектория АНПА)
 
-Для деталей по внутренним фиксам см. комментарии в `RUNBOOK.md` и по коду (`mur_simulator/`, `Urho3D/Source/...`).
+| Скрипт | Назначение |
+|--------|------------|
+| `python3 KURS/md_to_txt.py` | Конвертация `.md` → `.txt` для записки |
+| `python3 KURS/build_docx.py` | Сборка `KURS/docx/*.docx` из текстов |
+| `python3 KURS/output/draw_flowchart_2_2.py` | Блок-схема 2.2 |
+| `python3 KURS/output/draw_structure_2_1.py` | Структура ПО 2.1 |
+| `python3 KURS/output/draw_geometry_course.py` | Геометрия курса |
+| `python3 KURS/output/draw_section_4.py` | Графика раздела 4 (логи → `KURS/output/logs/`) |
+| `python3 KURS/output/draw_appendix_B.py` | Приложение В (таблица, графики) |
+
+Подписи и скриншоты: **[KURS/ИНСТРУКЦИЯ_РИСУНКИ.txt](KURS/ИНСТРУКЦИЯ_РИСУНКИ.txt)** · тексты: `KURS/ПЗ.txt`, `KURS/info.txt`
+
+После прогона миссии положите CSV в `KURS/output/logs/`, затем снова `draw_section_4.py`.
+
+## Скрипты KURS2 (библиотека объектов)
+
+```bash
+cd "KURS2/MUR_Object_Library"
+python3 tools/build_library.py    # все .mur_scene
+cd "../.."
+python3 KURS2/output/draw_graphic_materials.py   # плакаты, блок-схема 3.1, наборы А4
+python3 KURS2/build_docx.py                      # Word из ПЗ
+```
+
+Опционально: `./tools/start_editor.sh` — редактор Urho3D (не обязателен для записки).
+
+Подробнее: **[KURS2/README_LIBRARY.md](KURS2/README_LIBRARY.md)** · рисунки: **[KURS2/ИНСТРУКЦИЯ_РИСУНКИ.txt](KURS2/ИНСТРУКЦИЯ_РИСУНКИ.txt)**
+
+## Настройка миссии waypoints (в IDE)
+
+| Параметр | Где | Описание |
+|----------|-----|----------|
+| Точки маршрута | `mur_ide/resources/examples/waypoint_mission/waypoints.csv` | Координаты (ось Y CSV = Z сцены) |
+| `CYCLES` | `waypoint_mission.py` | Число проходов по маршруту |
+| Remote mode | Симулятор | Обязателен для управления с клавиатуры / скрипта |
+
+## Устранение неполадок
+
+| Проблема | Решение |
+|----------|---------|
+| `./start_ide` / `./start_simulator` не находит бинарник | Собрать по **RUNBOOK.md** (`mur_ide/build/mur_ide`, `mur_simulator/build/bin/simulator`) |
+| F5 в IDE — ошибка импорта | `pip install` / локальная установка **pymurapi** (RUNBOOK) |
+| Симулятор: чёрные объекты | Запуск из корня репо; пересборка `python3 KURS2/MUR_Object_Library/tools/build_library.py` |
+| Нет графиков раздела 4 | Положить `mission_*.csv` в `KURS/output/logs/`, запустить `draw_section_4.py` |
+| Путь с пробелом | Кавычки вокруг пути: `cd "/path/to/MUR IDE"` |
+
+## Структура (главное)
+
+| Путь | Содержимое |
+|------|------------|
+| `start_ide`, `start_simulator` | Запуск из корня |
+| `mur_ide/resources/examples/` | Python-примеры для F5 |
+| `KURS/` | Курсовой 1: ПЗ, генераторы графики |
+| `KURS2/MUR_Object_Library/` | Библиотека `.mur_scene` |
+| `RUNBOOK.md` | Установка и сборка (не для ежедневного запуска) |
+
+## Ссылки
+
+- Официальный MUR IDE: [murproject.com](https://murproject.com/#muride)
+- Полная сборка на macOS ARM: **[RUNBOOK.md](RUNBOOK.md)**

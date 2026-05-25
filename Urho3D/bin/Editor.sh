@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 if [[ $# -eq 0 ]]; then OPT1="-w -s"; fi
-$(dirname $0)/Urho3DPlayer Scripts/Editor.as $OPT1 $@
+DIR="$(cd "$(dirname "$0")" && pwd)"
+exec "$DIR/Urho3DPlayer" "$DIR/Scripts/Editor.as" $OPT1 "$@"
