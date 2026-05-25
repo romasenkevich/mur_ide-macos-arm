@@ -22,11 +22,32 @@ def load_log(path: str | Path) -> Tuple[List[float], List[float], List[float], L
     Загрузка данных из CSV‑лога.
     Возвращает списки: времена, x, y, z.
     """
+    times, xs, ys, zs, _, _, _, _ = load_log_full(path)
+    return times, xs, ys, zs
+
+
+def load_log_full(
+    path: str | Path,
+) -> Tuple[
+    List[float],
+    List[float],
+    List[float],
+    List[float],
+    List[float],
+    List[float],
+    List[float],
+    List[int],
+]:
+    """Полная загрузка CSV-журнала (столбцы как в logger_module.LOG_HEADER)."""
     file_path = Path(path)
     times: List[float] = []
     xs: List[float] = []
     ys: List[float] = []
     zs: List[float] = []
+    yaws: List[float] = []
+    target_yaws: List[float] = []
+    distances: List[float] = []
+    wp_idx: List[int] = []
 
     with file_path.open("r", encoding="utf-8") as f:
         reader = csv.DictReader(f)
@@ -35,8 +56,12 @@ def load_log(path: str | Path) -> Tuple[List[float], List[float], List[float], L
             xs.append(float(row["X"]))
             ys.append(float(row["Y"]))
             zs.append(float(row["Z"]))
+            yaws.append(float(row["Курс"]))
+            target_yaws.append(float(row["Целевой_курс"]))
+            distances.append(float(row["Расстояние"]))
+            wp_idx.append(int(float(row["Номер_точки"])))
 
-    return times, xs, ys, zs
+    return times, xs, ys, zs, yaws, target_yaws, distances, wp_idx
 
 
 def plot_trajectory(
@@ -83,4 +108,34 @@ def plot_depth_over_time(
     plt.tight_layout()
     plt.savefig(output_path, dpi=300)
     plt.close()
-    
+
+
+def plot_depth_and_course(
+    log_path: str | Path,
+    output_path: str | Path = "depth_course_plot.png",
+    target_depth: float | None = None,
+) -> None:
+    """
+    Эпюры глубины Z и курса от времени (рис. В.3 приложения).
+    """
+    times, _, _, zs, yaws, target_yaws, _, _ = load_log_full(log_path)
+    fig, (ax_z, ax_yaw) = plt.subplots(2, 1, figsize=(10, 6), sharex=True)
+
+    ax_z.plot(times, zs, "b-", linewidth=1.8, label="Z, м")
+    if target_depth is not None:
+        ax_z.axhline(target_depth, color="r", linestyle="--", linewidth=1.2, label="Заданная глубина")
+    ax_z.set_ylabel("Глубина, м")
+    ax_z.grid(True, linestyle="--", alpha=0.5)
+    ax_z.legend(loc="upper right")
+
+    ax_yaw.plot(times, yaws, "b-", linewidth=1.5, label="Курс, °")
+    ax_yaw.plot(times, target_yaws, "r--", linewidth=1.2, alpha=0.85, label="Целевой курс, °")
+    ax_yaw.set_xlabel("Время, с")
+    ax_yaw.set_ylabel("Курс, °")
+    ax_yaw.grid(True, linestyle="--", alpha=0.5)
+    ax_yaw.legend(loc="upper right")
+
+    fig.tight_layout()
+    fig.savefig(output_path, dpi=200, facecolor="white")
+    plt.close(fig)
+

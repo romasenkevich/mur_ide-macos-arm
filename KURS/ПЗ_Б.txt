@@ -1,0 +1,139 @@
+ПРИЛОЖЕНИЕ Б
+СОДЕРЖАНИЕ
+
+Программный код ключевых фрагментов. Полные исходники: mur_ide/resources/examples/waypoint_mission/
+
+waypoint_mission.py — подключение к симулятору и основной цикл 10 Гц.
+waypoints.py — переход к следующей путевой точке (гистерезис).
+navigation.py — расстояние, целевой курс, ошибка курса.
+control.py — П-законы для моторов симулятора.
+logger_module.py — заголовок CSV и запись строки.
+odometry.py — оценка координат при отсутствии X/Y в API.
+
+1. waypoint_mission.py — основной цикл
+
+import pymurapi as mur
+from waypoints import WaypointManager, load_waypoints_from_csv, default_waypoints
+from navigation import calculate_target_yaw_near_aware, distance_to_waypoint
+from control import sim_motor_commands, apply_motor_commands
+from logger_module import Logger
+from odometry import step_dead_reckoning
+
+CAPTURE_RADIUS = 0.10
+REACH_SLACK_M = 0.05
+APPROACH_RING_M = 0.06
+UPDATE_HZ = 10.0
+LOG_INTERVAL = 1.0
+
+def main() -> None:
+    auv = mur.mur_init()
+    if auv is None:
+        return
+    manager = WaypointManager(
+        waypoints=load_waypoints_from_csv("waypoints.csv"),
+        capture_radius=CAPTURE_RADIUS,
+        reach_slack_m=REACH_SLACK_M,
+        approach_ring_m=APPROACH_RING_M,
+        cycles=2,
+    )
+    logger = Logger()
+    est_x, est_y = 0.0, 0.0
+    last_m0, last_m1 = 0, 0
+
+    while not manager.is_finished():
+        x, y = est_x, est_y  # или get_x/get_y из API, если доступны
+        z = float(auv.get_depth())
+        current_yaw = float(auv.get_yaw())
+        wp = manager.current()
+
+        distance = distance_to_waypoint((x, y), wp)
+        target_yaw = calculate_target_yaw_near_aware(
+            x, y, wp[0], wp[1], current_yaw, degenerate_tol_m=0.08
+        )
+        motors = sim_motor_commands(current_yaw, target_yaw, z, wp[2])
+        apply_motor_commands(auv, motors)
+        last_m0, last_m1 = motors[0], motors[1]
+
+        est_x, est_y = step_dead_reckoning(
+            est_x, est_y, current_yaw, last_m0, last_m1, dt=0.1
+        )
+        manager.advance_if_reached(distance)
+        logger.log(x, y, z, current_yaw, target_yaw, distance, motors, manager._current_index)
+        time.sleep(1.0 / UPDATE_HZ)
+
+2. waypoints.py — схватывание точки
+
+def advance_if_reached(self, distance_to_current: float) -> None:
+    r_in = self.capture_radius + self.reach_slack_m
+    r_out = self.approach_ring_m
+    if distance_to_current > r_out:
+        self._was_outside_capture_for_current = True
+    if distance_to_current > r_in:
+        return
+    if not self._was_outside_capture_for_current:
+        return
+    self._was_outside_capture_for_current = False
+    self._current_index += 1
+    if self._current_index >= len(self.waypoints):
+        self._current_index = 0
+        self._completed_cycles += 1
+
+3. navigation.py — расчёты навигации
+
+def calculate_distance(x1, y1, x2, y2) -> float:
+    dx, dy = x2 - x1, y2 - y1
+    return math.sqrt(dx * dx + dy * dy)
+
+def calculate_target_yaw(x_cur, y_cur, x_tgt, y_tgt) -> float:
+    return math.degrees(math.atan2(y_tgt - y_cur, x_tgt - x_cur))
+
+def calculate_target_yaw_near_aware(x_cur, y_cur, x_tgt, y_tgt, current_yaw_deg, degenerate_tol_m=0.08):
+    dx, dy = x_tgt - x_cur, y_tgt - y_cur
+    if dx * dx + dy * dy < degenerate_tol_m ** 2:
+        return float(current_yaw_deg)
+    return calculate_target_yaw(x_cur, y_cur, x_tgt, y_tgt)
+
+def calculate_yaw_error(target_yaw, current_yaw) -> float:
+    return math.degrees(math.atan2(
+        math.sin(math.radians(target_yaw - current_yaw)),
+        math.cos(math.radians(target_yaw - current_yaw)),
+    ))
+
+4. control.py — П-регуляторы курса и глубины
+
+SIM_BASE_FORWARD = 40
+SIM_YAW_RES_GAIN = -0.8
+SIM_DEPTH_GAIN = 80.0
+
+def sim_motor_commands(current_yaw, target_yaw_deg, depth_measured, depth_target, base_forward=40):
+    er = calculate_yaw_error(target_yaw_deg, current_yaw)
+    res = max(-28, min(28, SIM_YAW_RES_GAIN * er))
+    m0 = int(max(-100, min(100, base_forward - res)))
+    m1 = int(max(-100, min(100, base_forward + res)))
+    depth_cmd = SIM_DEPTH_GAIN * (depth_measured - depth_target)
+    m2 = m3 = int(max(-100, min(100, depth_cmd)))
+    return (m0, m1, m2, m3)
+
+5. logger_module.py — запись CSV
+
+LOG_HEADER = [
+    "Время", "X", "Y", "Z", "Курс", "Целевой_курс", "Расстояние",
+    "Мощность_0", "Мощность_1", "Мощность_2", "Мощность_3", "Номер_точки",
+]
+
+def log(self, x, y, z, yaw, target_yaw, distance, motors, waypoint_index):
+    row = [time.time() - self._start_time, x, y, z, yaw, target_yaw, distance, *motors, waypoint_index]
+    self._file.writerow(row)
+
+6. odometry.py — оценка положения
+
+ODOMETRY_SPEED_SCALE = 0.065
+
+def step_dead_reckoning(x, y, yaw_deg, motor0, motor1, dt):
+    yaw_rad = math.radians(yaw_deg)
+    v = (0.5 * (motor0 + motor1) / 100.0) * ODOMETRY_SPEED_SCALE
+    x += v * math.sin(yaw_rad) * dt
+    y += v * math.cos(yaw_rad) * dt
+    return x, y
+
+Модуль visualize.py (построение графика OXY по CSV) приведён в репозитории целиком; в пояснительной записке описан в п. 3.7.
